@@ -5,7 +5,7 @@ import { fetchItems } from '../../apis/items'
 
 const ItemList = () => {
 
-  // 商品詳細データの取得
+  // 商品一覧データの取得
   useEffect(() => {
     fetchItems()
     .then((data) =>
