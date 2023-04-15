@@ -1,3 +1,4 @@
+# User
 users = [
   [1, "たけし", "aaa@gmail.com", "aaaaaa", "東京都北区1丁目◯番地", "080-1234-5678", Date.new(2023, 4, 30), "男"],
   [2, "さおり", "bbb@gmail.com", "bbbbbb", "東京都北区1丁目◯番地", "080-1234-5678", Date.new(2023, 4, 30), "女"],
@@ -6,6 +7,17 @@ users = [
 
 users.each do |id, name, email, password_digest, address, phone_number, birthday, gender|
   User.create(id: id, name: name, email: email, password_digest: password_digest, address: address, phone_number: phone_number, birthday: birthday, gender: gender)
+end
+
+# Item
+items = [
+  [1, "シャンプーA", "植物の可能性を追求したBOTANISTだからこそ生まれた新ボディーソープ。従来品の良さはそのままに、保湿性や洗い上がりの肌の状態をより感じてもらえる様、アップデート。", 200, 1000],
+  [2, "シャンプーB", "植物の可能性を追求したBOTANISTだからこそ生まれた新ボディーソープ。従来品の良さはそのままに、保湿性や洗い上がりの肌の状態をより感じてもらえる様、アップデート。", 300, 1000],
+  [3, "シャンプーC", "植物の可能性を追求したBOTANISTだからこそ生まれた新ボディーソープ。従来品の良さはそのままに、保湿性や洗い上がりの肌の状態をより感じてもらえる様、アップデート。", 400, 1000]
+]
+
+items.each do |id, name, description, price, stock|
+  Item.create(id: id, name: name, description: description, price: price, stock: stock)
 end
 
 orders = [
