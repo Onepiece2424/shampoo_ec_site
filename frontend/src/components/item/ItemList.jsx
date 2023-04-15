@@ -1,6 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+
+// function
+import { fetchItems } from '../../apis/items'
 
 const ItemList = () => {
+
+  // 商品詳細データの取得
+  useEffect(() => {
+    fetchItems()
+    .then((data) =>
+      console.log(data)
+    )
+  }, [])
   return (
     <div>
       Itemページです。

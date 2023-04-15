@@ -1,10 +1,11 @@
 import axios from 'axios';
 import { itemsIndex } from '../urls/index'
 
-export const fetchItems = () => {
-  return axios.get(itemsIndex)
-  .then(res => {
-    return res.data
-  })
-  .catch((e) => console.error(e))
+export const fetchItems = async () => {
+  try {
+    const res = await axios.get(itemsIndex);
+    return res.data;
+  } catch (e) {
+    return console.error(e);
+  }
 }
