@@ -3,7 +3,7 @@ module Api
     class ItemsController < ApplicationController
       def index
         items = Item.all
-        render json: { item: items }, status: :ok
+        render json: { items: items }, status: :ok
       end
     end
   end
