@@ -8,17 +8,12 @@ const ItemList = () => {
 
   // 商品一覧データの取得
   useEffect(() => {
-    // fetchItems()
-    // .then((data) =>
-    //   setItems(data)
-    // )
-    const fetchData = async () => {
-      const data = await fetchItems();
-      setList(data);
-    };
-    fetchData();
+    fetchItems()
+    .then((data) =>
+      setList(data)
+    )
   }, [])
-  console.log(list.items)
+
   return (
     <div>
       商品一覧ページです。
