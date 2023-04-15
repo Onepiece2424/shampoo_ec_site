@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 
 // apis
-import { fetchItems } from '../apis/items';
+import { fetchItems } from '../../apis/items';
 
 const Top = () => {
 
