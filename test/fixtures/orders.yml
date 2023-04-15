@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  total_price: 1
+  payment: 1
+  order_name: MyString
+  order_address: MyString
+  delivery_date: 2023-04-15
+  delivery_time: 2023-04-15 13:50:47
+
+two:
+  user: two
+  total_price: 1
+  payment: 1
+  order_name: MyString
+  order_address: MyString
+  delivery_date: 2023-04-15
+  delivery_time: 2023-04-15 13:50:47
