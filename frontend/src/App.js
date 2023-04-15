@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Top from './components/common/Top';
 import Header from './components/modules/Header';
 import ItemList from './components/item/ItemList';
+import ItemDetail from './components/item/ItemDetail';
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
           </Route>
           <Route exact path="/items">
             <ItemList />
+          </Route>
+          <Route exact path="/items/1">
+            <ItemDetail />
           </Route>
         </Switch>
       </Router>
