@@ -19,9 +19,7 @@ function App() {
           <Route exact path="/items">
             <ItemList />
           </Route>
-          <Route exact path="/items/1">
-            <ItemDetail />
-          </Route>
+          <Route path="/items/:id" component={ItemDetail} />
         </Switch>
       </Router>
     </div>

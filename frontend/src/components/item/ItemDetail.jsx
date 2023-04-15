@@ -1,16 +1,17 @@
 import React, { useEffect } from 'react'
-
 import { fetchItemsDetail } from '../../apis/itemsDetail'
 
-const ItemDetail = () => {
+const ItemDetail = ({ match }) => {
 
-  // 商品データの取得
+  const id = match.params.id
+
+  // 商品詳細データの取得
   useEffect(() => {
-    fetchItemsDetail(1)
+    fetchItemsDetail(id)
     .then((data) =>
       console.log(data)
     )
-  }, [])
+  }, [id])
 
   return (
     <div>

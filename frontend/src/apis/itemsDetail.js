@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { itemsDetail } from '../urls/index'
 
-export const fetchItemsDetail = () => {
-  return axios.get(itemsDetail(1))
+export const fetchItemsDetail = (id) => {
+  return axios.get(itemsDetail(id))
   .then(res => {
     return res.data
   })
