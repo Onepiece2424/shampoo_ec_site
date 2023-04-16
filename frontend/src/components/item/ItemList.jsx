@@ -5,6 +5,7 @@ import { fetchItems } from '../../apis/items'
 
 // components
 import MediaCard from '../Icons'
+import { Link } from 'react-router-dom';
 
 const ItemList = () => {
   const [list, setList] = useState([])
@@ -23,9 +24,9 @@ const ItemList = () => {
       <br></br>
       {list && list.items && list.items.map((item) => {
         return (
-          <>
+          <Link to={`/items/${item.id}`}>
             <MediaCard key={item.id} name={item.name} description={item.description} price={item.price} stock={item.stock} />
-          </>
+          </Link>
         );
       })}
     </div>
