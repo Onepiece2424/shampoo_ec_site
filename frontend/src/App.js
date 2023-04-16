@@ -8,6 +8,8 @@ import ItemList from './components/item/ItemList';
 import ItemDetail from './components/item/ItemDetail';
 import NotFound from './components/common/NotFound';
 import Cart from './components/cart/Cart';
+import Addressee from './components/addressee/Addressee';
+import Thanks from './components/thanks/Thanks';
 
 function App() {
   return (
@@ -25,6 +27,12 @@ function App() {
               <Cart />
             </Route>
             <Route path="/items/:id" component={ItemDetail} />
+            <Route exact path="/addressee">
+              <Addressee />
+            </Route>
+            <Route exact path="/thanks">
+              <Thanks />
+            </Route>
             <Route path={`/*/`} component={NotFound} />
           </Switch>
       </div>
