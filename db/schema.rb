@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_16_072600) do
+ActiveRecord::Schema.define(version: 2023_04_16_075428) do
+
+  create_table "cart_items", force: :cascade do |t|
+    t.integer "cart_id", null: false
+    t.integer "item_id", null: false
+    t.integer "quantity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["cart_id"], name: "index_cart_items_on_cart_id"
+    t.index ["item_id"], name: "index_cart_items_on_item_id"
+  end
 
   create_table "carts", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -70,6 +80,8 @@ ActiveRecord::Schema.define(version: 2023_04_16_072600) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "cart_items", "carts"
+  add_foreign_key "cart_items", "items"
   add_foreign_key "carts", "users"
   add_foreign_key "order_details", "items"
   add_foreign_key "order_details", "orders"
