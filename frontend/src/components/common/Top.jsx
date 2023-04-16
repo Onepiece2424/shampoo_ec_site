@@ -21,7 +21,7 @@ const Top = () => {
   return (
     <div>
       <br></br>
-      {list && list.items && list.items.map((item) => {
+      {list?.items?.map((item) => {
         return (
           <Link to={`/items/${item.id}`}>
             <MediaCard key={item.id} name={item.name} description={item.description} price={item.price} stock={item.stock} />
