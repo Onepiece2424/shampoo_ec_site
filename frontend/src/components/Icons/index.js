@@ -5,6 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import logo from '../..//20230416_シャンプー画像.jpg'
 
 const MediaCard = ({ name, description, price, stock }) => {
   return (
@@ -12,8 +13,8 @@ const MediaCard = ({ name, description, price, stock }) => {
       <Card sx={{ maxWidth: 345 }}>
         <CardMedia
           sx={{ height: 140 }}
-          image="/static/images/cards/contemplative-reptile.jpg"
-          title="green iguana"
+          image={logo}
+          title="shampoo"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
