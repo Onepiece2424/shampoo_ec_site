@@ -3,6 +3,9 @@ import React, { useState, useEffect } from 'react'
 // function
 import { fetchItems } from '../../apis/items'
 
+// components
+import MediaCard from '../Icons'
+
 const ItemList = () => {
   const [list, setList] = useState([])
 
@@ -17,8 +20,13 @@ const ItemList = () => {
   return (
     <div>
       商品一覧ページです。
+      <br></br>
       {list && list.items && list.items.map((item) => {
-        return <div key={item.id}>{item.name}</div>;
+        return (
+          <>
+            <MediaCard key={item.id} name={item.name} description={item.description} price={item.price} stock={item.stock} />
+          </>
+        );
       })}
     </div>
   )
