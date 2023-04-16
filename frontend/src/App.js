@@ -10,6 +10,8 @@ import NotFound from './components/common/NotFound';
 import Cart from './components/cart/Cart';
 import Addressee from './components/addressee/Addressee';
 import Thanks from './components/thanks/Thanks';
+import SignIn from './components/sign_in/SignIn';
+import SignUp from './components/sign_up/SignUp';
 
 function App() {
   return (
@@ -19,6 +21,12 @@ function App() {
           <Switch>
             <Route exact path="/">
               <Top />
+            </Route>
+            <Route exact path="/sign_up">
+              <SignIn />
+            </Route>
+            <Route exact path="/sign_in">
+              <SignUp />
             </Route>
             <Route exact path="/items">
               <ItemList />
