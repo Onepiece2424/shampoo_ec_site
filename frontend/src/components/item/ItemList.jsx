@@ -20,7 +20,6 @@ const ItemList = () => {
 
   return (
     <div>
-      商品一覧ページです。
       <br></br>
       {list && list.items && list.items.map((item) => {
         return (

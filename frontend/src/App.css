@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+
+.column {
+  width: 100%;
+}
+
+.cat1 {
+  background-size: cover;
+}
+
+.cat2 {
+  background-size: cover;
+}
+
+@media all and (min-width: 500px) {
+  .wrapper {
+    display: flex;
+  }
+}

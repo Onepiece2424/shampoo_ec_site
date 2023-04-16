@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { fetchItemsDetail } from '../../apis/itemsDetail'
+import Typography from '@mui/material/Typography';
+import logo from '../..//20230416_シャンプー画像.jpg'
 
 const ItemDetail = ({ match }) => {
 
@@ -16,12 +18,34 @@ const ItemDetail = ({ match }) => {
 
   return (
     <>
-      商品詳細ページです。
       <br></br>
-      <div>商品名{item && item.name}</div>
-      <div>特徴{item && item.description}</div>
-      <div>価格 ¥{item && item.price}</div>
-      <div>在庫数 {item && item.stock}</div>
+      <div className="wrapper">
+        <div className="column cat1">
+          <div className="info">
+            <img src={logo} />
+          </div>
+        </div>
+        <div className="column cat2">
+          <div className="info">
+            <div>商品名{item && item.name}</div>
+          </div>
+        </div>
+      </div>
+      <br></br>
+      <Typography variant="body2" color="text.secondary">
+        特徴
+      </Typography>
+      <div>{item && item.description}</div>
+      <br></br>
+      <Typography variant="body2" color="text.secondary">
+        価格
+      </Typography>
+      <div>¥{item && item.price}</div>
+      <br></br>
+      <Typography variant="body2" color="text.secondary">
+        在庫数
+      </Typography>
+      <div>{item && item.stock}</div>
     </>
   )
 }
