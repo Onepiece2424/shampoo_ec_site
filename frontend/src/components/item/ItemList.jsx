@@ -23,7 +23,7 @@ const ItemList = () => {
       <br></br>
       {list && list.items && list.items.map((item) => {
         return (
-          <Link to={`/items/${item.id}`}>
+          <Link key={item.id} to={`/items/${item.id}`}>
             <MediaCard key={item.id} name={item.name} description={item.description} price={item.price} stock={item.stock} />
           </Link>
         );
