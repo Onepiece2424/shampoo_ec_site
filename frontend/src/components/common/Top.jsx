@@ -1,23 +1,35 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
-// apis
-import { fetchItems } from '../../apis/items';
+// function
+import { fetchItems } from '../../apis/items'
+
+// components
+import MediaCard from '../Icons'
+import { Link } from 'react-router-dom';
 
 const Top = () => {
+  const [list, setList] = useState([])
 
-  // 商品データの取得
+  // 商品一覧データの取得
   useEffect(() => {
     fetchItems()
     .then((data) =>
-      console.log(data)
+      setList(data)
     )
   }, [])
 
   return (
     <div>
-      Topページです。
+      <br></br>
+      {list && list.items && list.items.map((item) => {
+        return (
+          <Link to={`/items/${item.id}`}>
+            <MediaCard key={item.id} name={item.name} description={item.description} price={item.price} stock={item.stock} />
+          </Link>
+        );
+      })}
     </div>
   )
 }
 
-export default Top
+export default Top;
