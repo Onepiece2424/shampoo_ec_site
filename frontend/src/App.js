@@ -19,33 +19,15 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Top />} />
-      </Routes>
-      <Routes>
         <Route path="/sign_up" element={<SignIn />} />
-      </Routes>
-      <Routes>
         <Route path="/sign_in" element={<SignUp />} />
-      </Routes>
-      <Routes>
         <Route path="/items" element={<ItemList />} />
-      </Routes>
-      <Routes>
         <Route path="/carts" element={<Cart />} />
-      </Routes>
-      <Routes>
         <Route path="/carts" element={<Cart />} />
-      </Routes>
-      <Routes>
         <Route path="/addressee" element={<Addressee />} />
-      </Routes>
-      <Routes>
         <Route path="/thanks" element={<Thanks />} />
-      </Routes>
-      <Routes>
         <Route path="/items/:id" element={<ItemDetail />} />
-      </Routes>
-      <Routes>
-        <Route path={`/*/`} element={<NotFound />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );
