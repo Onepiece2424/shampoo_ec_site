@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom';
 import { fetchItemsDetail } from '../../apis/itemsDetail'
 import Typography from '@mui/material/Typography';
 import logo from '../..//20230416_シャンプー画像.jpg'
 
-const ItemDetail = ({ match }) => {
+const ItemDetail = () => {
 
   const [item, setItem] = useState()
-  const id = match.params.id
+  const params = useParams();
+  const id = params.id
 
   // 商品詳細データの取得
   useEffect(() => {

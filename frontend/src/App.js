@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 // components
 import Top from './components/common/Top';
@@ -15,36 +15,39 @@ import SignUp from './components/sign_up/SignUp';
 
 function App() {
   return (
-    <Router>
-      <div className='App'>
-        <Header />
-          <Switch>
-            <Route exact path="/">
-              <Top />
-            </Route>
-            <Route exact path="/sign_up">
-              <SignIn />
-            </Route>
-            <Route exact path="/sign_in">
-              <SignUp />
-            </Route>
-            <Route exact path="/items">
-              <ItemList />
-            </Route>
-            <Route exact path="/carts">
-              <Cart />
-            </Route>
-            <Route path="/items/:id" component={ItemDetail} />
-            <Route exact path="/addressee">
-              <Addressee />
-            </Route>
-            <Route exact path="/thanks">
-              <Thanks />
-            </Route>
-            <Route path={`/*/`} component={NotFound} />
-          </Switch>
-      </div>
-    </Router>
+    <div className='App'>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Top />} />
+      </Routes>
+      <Routes>
+        <Route path="/sign_up" element={<SignIn />} />
+      </Routes>
+      <Routes>
+        <Route path="/sign_in" element={<SignUp />} />
+      </Routes>
+      <Routes>
+        <Route path="/items" element={<ItemList />} />
+      </Routes>
+      <Routes>
+        <Route path="/carts" element={<Cart />} />
+      </Routes>
+      <Routes>
+        <Route path="/carts" element={<Cart />} />
+      </Routes>
+      <Routes>
+        <Route path="/addressee" element={<Addressee />} />
+      </Routes>
+      <Routes>
+        <Route path="/thanks" element={<Thanks />} />
+      </Routes>
+      <Routes>
+        <Route path="/items/:id" element={<ItemDetail />} />
+      </Routes>
+      <Routes>
+        <Route path={`/*/`} element={<NotFound />} />
+      </Routes>
+    </div>
   );
 }
 

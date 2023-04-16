@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -25,11 +25,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ButtonAppBar() {
   const classes = useStyles();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   // ロゴクリック時に"/"へページ遷移
   const handleHomeClick = () => {
-    history.push('/');
+    navigate('/');
   };
 
   return (
