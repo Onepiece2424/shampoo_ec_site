@@ -22,7 +22,7 @@ const ItemDetail = ({ match }) => {
       <div className="wrapper">
         <div className="column cat1">
           <div className="info">
-            <img src={logo} />
+            <img src={logo} alt="シャンプー画像" />
           </div>
         </div>
         <div className="column cat2">
