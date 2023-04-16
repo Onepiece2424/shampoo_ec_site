@@ -51,6 +51,7 @@
 
 .cat2 {
   background-size: cover;
+  padding: 100px 0;
 }
 
 @media all and (min-width: 500px) {
