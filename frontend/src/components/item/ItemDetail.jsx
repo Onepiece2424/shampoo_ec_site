@@ -27,25 +27,28 @@ const ItemDetail = ({ match }) => {
         </div>
         <div className="column cat2">
           <div className="info">
-            <div>商品名{item && item.name}</div>
+            <Typography variant="body2" color="text.secondary">
+              商品名
+            </Typography>
+            <div>{item && item.name}</div>
+            <br></br>
+            <Typography variant="body2" color="text.secondary">
+              特徴
+            </Typography>
+            <div>{item && item.description}</div>
+            <br></br>
+            <Typography variant="body2" color="text.secondary">
+              価格
+            </Typography>
+            <div>¥{item && item.price}</div>
+            <br></br>
+            <Typography variant="body2" color="text.secondary">
+              在庫数
+            </Typography>
+            <div>{item && item.stock}</div>
           </div>
         </div>
       </div>
-      <br></br>
-      <Typography variant="body2" color="text.secondary">
-        特徴
-      </Typography>
-      <div>{item && item.description}</div>
-      <br></br>
-      <Typography variant="body2" color="text.secondary">
-        価格
-      </Typography>
-      <div>¥{item && item.price}</div>
-      <br></br>
-      <Typography variant="body2" color="text.secondary">
-        在庫数
-      </Typography>
-      <div>{item && item.stock}</div>
     </div>
   )
 }
