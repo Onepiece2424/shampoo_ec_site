@@ -37,6 +37,10 @@
   }
 }
 
+.contents {
+  margin: 0 50px;
+}
+
 .column {
   width: 100%;
 }

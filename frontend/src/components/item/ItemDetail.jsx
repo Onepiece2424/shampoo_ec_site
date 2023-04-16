@@ -17,7 +17,7 @@ const ItemDetail = ({ match }) => {
   }, [id])
 
   return (
-    <>
+    <div className="contents">
       <br></br>
       <div className="wrapper">
         <div className="column cat1">
@@ -46,7 +46,7 @@ const ItemDetail = ({ match }) => {
         在庫数
       </Typography>
       <div>{item && item.stock}</div>
-    </>
+    </div>
   )
 }
 
