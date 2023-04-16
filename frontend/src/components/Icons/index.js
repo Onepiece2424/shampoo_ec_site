@@ -23,6 +23,10 @@ const MediaCard = ({ name, description, price, stock }) => {
             {description}
           </Typography>
         </CardContent>
+        <div>
+          <Typography size="small">¥{price}</Typography>
+          <Typography size="small">在庫数{stock}</Typography>
+        </div>
       </Card>
     </Button>
   );
