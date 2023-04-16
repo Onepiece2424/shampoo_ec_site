@@ -10,18 +10,18 @@ import ItemDetail from './components/item/ItemDetail';
 function App() {
   return (
     <Router>
-    <div className='App'>
-      <Header />
-        <Switch>
-          <Route exact path="/">
-            <Top />
-          </Route>
-          <Route exact path="/items">
-            <ItemList />
-          </Route>
-          <Route path="/items/:id" component={ItemDetail} />
-        </Switch>
-    </div>
+      <div className='App'>
+        <Header />
+          <Switch>
+            <Route exact path="/">
+              <Top />
+            </Route>
+            <Route exact path="/items">
+              <ItemList />
+            </Route>
+            <Route path="/items/:id" component={ItemDetail} />
+          </Switch>
+      </div>
     </Router>
   );
 }
