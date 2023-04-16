@@ -9,9 +9,9 @@ import ItemDetail from './components/item/ItemDetail';
 
 function App() {
   return (
+    <Router>
     <div className='App'>
       <Header />
-      <Router>
         <Switch>
           <Route exact path="/">
             <Top />
@@ -21,8 +21,8 @@ function App() {
           </Route>
           <Route path="/items/:id" component={ItemDetail} />
         </Switch>
-      </Router>
     </div>
+    </Router>
   );
 }
 
