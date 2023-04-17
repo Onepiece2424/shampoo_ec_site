@@ -23,7 +23,6 @@ function App() {
         <Route path="/sign_in" element={<SignUp />} />
         <Route path="/items" element={<ItemList />} />
         <Route path="/carts" element={<Cart />} />
-        <Route path="/carts" element={<Cart />} />
         <Route path="/addressee" element={<Addressee />} />
         <Route path="/thanks" element={<Thanks />} />
         <Route path="/items/:id" element={<ItemDetail />} />
