@@ -19,8 +19,8 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Top />} />
-        <Route path="users/sign_up" element={<SignIn />} />
-        <Route path="users/sign_in" element={<SignUp />} />
+        <Route path="users/sign_in" element={<SignIn />} />
+        <Route path="users/sign_up" element={<SignUp />} />
         <Route path="/items" element={<ItemList />} />
         <Route path="/carts" element={<Cart />} />
         <Route path="/order" element={<Order />} />
