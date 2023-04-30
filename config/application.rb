@@ -36,5 +36,11 @@ module ShampooEcSite
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    # ActionDispatch::Flashをインストール
+    config.middleware.use ActionDispatch::Flash
+
+    # CSRF対策
+    config.action_controller.allow_forgery_protection = false
   end
 end
