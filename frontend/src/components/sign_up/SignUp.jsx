@@ -9,18 +9,17 @@ const SignUp = () => {
   const [gender, setGender] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [passwordConfirmation, setPasswordConfirmation] = useState('');
+  const [password_confirmation, setPasswordConfirmation] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    axios.post('http://localhost:3010/api/v1/registrations', { user: { name, email, password, password_confirmation: passwordConfirmation, address, phone_number: phonenumber, birthday, gender } })
-      .then((response) => {
-        console.log(response)
-        console.log('新規登録に成功しました');
-      })
-      .catch((error) => {
-        console.log('新規登録に失敗しました');
-      });
+    // const response = await axios.post('http://localhost:3010/api/v1/auth', {
+    //   email: email,
+    //   password: password,
+    //   password_confirmation: password_confirmation,
+    //   name: name,
+    // })
+    // console.log(response)
   };
 
   return (
@@ -39,9 +38,9 @@ const SignUp = () => {
       </div>
       <div>
         <label htmlFor="password-confirmation">パスワード確認</label>
-        <input type="password" id="password-confirmation" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} />
+        <input type="password" id="password-confirmation" value={password_confirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} />
       </div>
-      <div>
+      {/* <div>
         <label htmlFor="address">住所</label>
         <input type="address" id="address" value={address} onChange={(e) => setAddress(e.target.value)} />
       </div>
@@ -56,7 +55,7 @@ const SignUp = () => {
       <div>
         <label htmlFor="gender">性別</label>
         <input type="gender" id="gender" value={gender} onChange={(e) => setGender(e.target.value)} />
-      </div>
+      </div> */}
       <button type="submit">新規登録</button>
     </form>
   );
