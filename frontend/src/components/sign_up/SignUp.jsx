@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
+// api
+import { userDataCreate } from '../../apis/signUp';
 
 const SignUp = () => {
   const [name, setName] = useState('');
@@ -11,19 +14,31 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
   const [password_confirmation, setPasswordConfirmation] = useState('');
 
-  const handleSubmit = async(e) => {
+  const navigate = useNavigate();
+
+  // ユーザーの新規登録
+  const userDataSubmit = async(e) => {
     e.preventDefault();
-    // const response = await axios.post('http://localhost:3010/api/v1/auth', {
-    //   email: email,
-    //   password: password,
-    //   password_confirmation: password_confirmation,
-    //   name: name,
-    // })
-    // console.log(response)
+    const params = {
+      email: email,
+      password: password,
+      password_confirmation: password_confirmation,
+      name: name,
+    }
+
+    // ユーザー情報を送信
+    userDataCreate(params)
+    .then((data) => {
+      console.log(data)
+      navigate('/items')
+    })
+    .catch(e => {
+      console.log(e)
+    })
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={userDataSubmit}>
       <div>
         <label htmlFor="name">名前</label>
         <input type="name" id="name" value={name} onChange={(e) => setName(e.target.value)} />
