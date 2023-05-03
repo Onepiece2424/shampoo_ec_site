@@ -1,13 +1,13 @@
 # User
-users = [
-  ["たけし", "aaa@gmail.com", "aaaaaa", "東京都北区1丁目◯番地", "080-1234-5678", Date.new(2023, 4, 30), "男"],
-  ["さおり", "bbb@gmail.com", "bbbbbb", "東京都北区1丁目◯番地", "080-1234-5678", Date.new(2023, 4, 30), "女"],
-  ["たろう", "ccc@gmail.com", "cccccc", "東京都北区1丁目◯番地", "080-1234-5678", Date.new(2023, 4, 30), "ゴリラ"]
-]
+# users = [
+#   ["たけし", "aaa@gmail.com", "aaaaaa", "東京都北区1丁目◯番地", "080-1234-5678", Date.new(2023, 4, 30), "男"],
+#   ["さおり", "bbb@gmail.com", "bbbbbb", "東京都北区1丁目◯番地", "080-1234-5678", Date.new(2023, 4, 30), "女"],
+#   ["たろう", "ccc@gmail.com", "cccccc", "東京都北区1丁目◯番地", "080-1234-5678", Date.new(2023, 4, 30), "ゴリラ"]
+# ]
 
-users.each do |name, email, password_digest, address, phone_number, birthday, gender|
-  User.create(name: name, email: email, password_digest: password_digest, address: address, phone_number: phone_number, birthday: birthday, gender: gender)
-end
+# users.each do |name, email, password_digest, address, phone_number, birthday, gender|
+#   User.create(name: name, email: email, password_digest: password_digest, address: address, phone_number: phone_number, birthday: birthday, gender: gender)
+# end
 
 # Item
 items = [
