@@ -12,6 +12,7 @@ import Order from './components/order/Order';
 import Thanks from './components/thanks/Thanks';
 import SignIn from './components/sign_in/SignIn';
 import SignUp from './components/sign_up/SignUp';
+import SignUpConfirmation from './components/sign_up/SignUpConfirmation';
 
 function App() {
   return (
@@ -19,8 +20,9 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Top />} />
-        <Route path="users/sign_in" element={<SignIn />} />
         <Route path="users/sign_up" element={<SignUp />} />
+        <Route path="/sign_up_confirmation" element={<SignUpConfirmation />} />
+        <Route path="users/sign_in" element={<SignIn />} />
         <Route path="/items" element={<ItemList />} />
         <Route path="/carts" element={<Cart />} />
         <Route path="/order" element={<Order />} />
