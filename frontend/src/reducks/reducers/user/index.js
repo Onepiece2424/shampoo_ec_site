@@ -1,16 +1,14 @@
 // initialState
 const initialState = {
-  email: {},
-  password: {},
-  password_confirmation: {},
-  name: {}
+  email: "",
+  name: ""
 }
 
 // reducer
 export const user = (state = initialState, action) => {
   switch(action.type) {
     case 'CREATE_USER_DATA':
-      return { ...state, email: action.payload.email, password: action.payload.password, password_confirmation: action.payload.password_confirmation, name: action.payload.name }
+      return { ...state, email: action.payload.data.data.email, name: action.payload.data.data.name }
     default:
       return state
   }
@@ -18,7 +16,6 @@ export const user = (state = initialState, action) => {
 
 // Action Creator
 export const createUserData = (value) => {
-  console.log(value)
   return {
     type:  'CREATE_USER_DATA',
     payload: value

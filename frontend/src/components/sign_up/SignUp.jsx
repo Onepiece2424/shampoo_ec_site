@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useDispatch } from "react-redux";
 
 // api
 import { userDataCreate } from '../../apis/signUp';
 
 const SignUp = () => {
   const [name, setName] = useState('');
-  const [address, setAddress] = useState('');
-  const [phonenumber, setPhoneNumber] = useState('');
-  const [birthday, setBirthday] = useState('');
-  const [gender, setGender] = useState('');
+  // const [address, setAddress] = useState('');
+  // const [phonenumber, setPhoneNumber] = useState('');
+  // const [birthday, setBirthday] = useState('');
+  // const [gender, setGender] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [password_confirmation, setPasswordConfirmation] = useState('');
 
-  const navigate = useNavigate();
+  const dispatch = useDispatch()
 
   // ユーザーの新規登録
-  const userDataSubmit = async(e) => {
+  const userDataSubmit = (e) => {
     e.preventDefault();
     const params = {
       email: email,
@@ -27,14 +27,7 @@ const SignUp = () => {
     }
 
     // ユーザー情報を送信
-    userDataCreate(params)
-    .then((data) => {
-      console.log(data)
-      navigate('/items')
-    })
-    .catch(e => {
-      console.log(e)
-    })
+    userDataCreate(params, dispatch)
   };
 
   return (
