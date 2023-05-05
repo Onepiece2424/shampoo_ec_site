@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate, useLocation } from 'react-router-dom';
 
 // api
 import { userDataCreate } from '../../apis/signUp';
+
+// function
+import { pageTransitionFlag } from '../../reducks/reducers/common';
 
 const SignUp = () => {
   const [name, setName] = useState('');
@@ -14,10 +18,13 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
   const [password_confirmation, setPasswordConfirmation] = useState('');
 
+  const pageFlag = useSelector(state => state.pageFlag)
   const dispatch = useDispatch()
+  const navigate = useNavigate();
+  const location = useLocation();
 
   // ユーザーの新規登録
-  const userDataSubmit = (e) => {
+  const userDataSubmit = async(e) => {
     e.preventDefault();
     const params = {
       email: email,
@@ -27,8 +34,29 @@ const SignUp = () => {
     }
 
     // ユーザー情報を送信
-    userDataCreate(params, dispatch)
+    await userDataCreate(params, dispatch)
   };
+
+  // ユーザー情報作成後、登録完了ページ遷移
+  useEffect(() => {
+    if (pageFlag.flag) {
+      navigate('/sign_up_confirmation');
+    }
+  }, [pageFlag.flag, navigate]);
+
+
+  useEffect(() => {
+    const cleanupState = () => {
+      if (location.pathname === '/users/sign_up') {
+        dispatch(pageTransitionFlag(false))
+      }
+    };
+
+    return () => {
+      cleanupState();
+    };
+  }, [location.pathname, dispatch]);
+
 
   return (
     <form onSubmit={userDataSubmit}>

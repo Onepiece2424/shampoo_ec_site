@@ -3,9 +3,11 @@ import thunk from 'redux-thunk';
 
 // reducer
 import { userReducer } from "../reducers/user";
+import { flagReducer } from "../reducers/common";
 
 export const rootReducer = combineReducers({
-  user: userReducer
+  user: userReducer,
+  pageFlag: flagReducer,
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
