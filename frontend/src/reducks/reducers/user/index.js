@@ -15,7 +15,7 @@ export const userReducer = (state = initialState, action) => {
 }
 
 // Action Creator
-export const createUserData = (value) => {
+export const dispatchUserData = (value) => {
   return {
     type:  'CREATE_USER_DATA',
     payload: value
