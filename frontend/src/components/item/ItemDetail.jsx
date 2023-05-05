@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom';
-import { fetchItemsDetail } from '../../apis/itemsDetail'
 import Typography from '@mui/material/Typography';
 import logo from '../..//20230416_シャンプー画像.jpg'
 import { Button } from '@mui/material';
+
+// components
+import ItemDropDownForm from './ItemDropDownForm';
+
+// api
+import { fetchItemsDetail } from '../../apis/itemsDetail'
 
 const ItemDetail = () => {
 
@@ -57,7 +62,9 @@ const ItemDetail = () => {
             <div>{item && item.stock}</div>
           </div>
           <br></br>
-          <Button variant="outlined">カートに入れる</Button>
+          <ItemDropDownForm />
+          <br></br>
+          <Button variant="outlined" onClick={InsertItemToCart}>カートに入れる</Button>
           <Button variant="outlined" style={{ margin: '3mm'}} onClick={() => navigate('/order')}>ご注文手続きへ</Button>
         </div>
       </div>
