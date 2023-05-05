@@ -45,6 +45,7 @@ const SignUp = () => {
   }, [pageFlag.flag, navigate]);
 
 
+  // ユーザー登録ページに来たとき、登録完了ページに切り替えるためのフラグ（state）を初期化
   useEffect(() => {
     const cleanupState = () => {
       if (location.pathname === '/users/sign_up') {
