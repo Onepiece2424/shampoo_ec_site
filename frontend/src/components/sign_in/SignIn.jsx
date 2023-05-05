@@ -65,6 +65,12 @@ const SignIn = (props) => {
         <br></br>
         <Button variant="outlined" onClick={submitLoginUserData}>ログイン</Button>
       </form>
+      <br></br>
+      <br></br>
+      <br></br>
+      <div>会員登録がまだの方はこちらへ</div>
+      <br></br>
+      <Button variant="outlined" onClick={() => navigate('/users/sign_up')}>新規会員登録（無料）</Button>
     </>
   )
 }
