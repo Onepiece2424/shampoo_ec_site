@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from "react-redux";
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 
 // function
 import { pageTransitionFlag } from '../../reducks/reducers/common';
@@ -24,9 +24,16 @@ const SignUpConfirmation = () => {
   }, [location.pathname, dispatch]);
 
   return (
-    <div>
-      新規登録完了しました。
-    </div>
+    <>
+      <br></br>
+      <div>
+        新規登録完了しました。
+      </div>
+      <br></br>
+      <div>
+        購入は<Link to="/">こちら</Link>から
+      </div>
+    </>
   )
 }
 
