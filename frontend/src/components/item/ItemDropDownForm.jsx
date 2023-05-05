@@ -1,43 +1,19 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { FormControl, InputLabel, FormHelperText } from '@mui/material';
+import SelectField from '@mui/material/Select';
 
-const renderDropdown = ({ input, label, range, meta: { touched, error } }) => (
-  <div>
-    <label>{label}</label>
-    <div>
-      <select {...input}>
-        {range.map(value => <option value={value} key={value}>{value}</option>)}
-      </select>
-      {touched && error && <span>{error}</span>}
-    </div>
-  </div>
-);
+const ItemDropDownForm = (props) => {
+  const { label, input, meta: { touched, error }, children } = props;
 
-const validate = values => {
-  const errors = {};
-  if (!values.quantity) {
-    errors.quantity = '必須です';
-  }
-  return errors;
-};
-
-const ItemDropDownForm = props => {
-  const { handleSubmit } = props;
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <Field
-          name="quantity"
-          component={renderDropdown}
-          label="数量"
-          range={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]} // 1~10の選択範囲
-        />
-      </div>
-    </form>
-  );
+    <FormControl fullWidth variant="outlined" error={touched && error}>
+      <InputLabel>{label}</InputLabel>
+      <SelectField {...input} label={label}>
+        {children}
+      </SelectField>
+      {touched && error && <FormHelperText>{error}</FormHelperText>}
+    </FormControl>
+  )
 };
 
-export default reduxForm({
-  form: 'orderForm',
-  validate
-})(ItemDropDownForm);
+export default ItemDropDownForm

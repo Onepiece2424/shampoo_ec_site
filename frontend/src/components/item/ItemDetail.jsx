@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import logo from '../..//20230416_シャンプー画像.jpg'
-import { Button } from '@mui/material';
+import { Button, MenuItem } from '@mui/material';
+import { Field, reduxForm } from 'redux-form';
 
 // components
 import ItemDropDownForm from './ItemDropDownForm';
@@ -29,6 +30,15 @@ const ItemDetail = () => {
   const InsertItemToCart = () => {
     console.log('カートへ入れました。')
   }
+
+  const options = [
+    // { value: 'apple', label: 'りんご' },
+    // { value: 'orange', label: 'オレンジ' },
+    // { value: 'grape', label: 'ぶどう' },
+    // { value: 'banana', label: 'バナナ' },
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+  ];
+
 
   return (
     <div className="contents">
@@ -62,7 +72,14 @@ const ItemDetail = () => {
             <div>{item && item.stock}</div>
           </div>
           <br></br>
-          <ItemDropDownForm />
+          <Field name="quantity" component={ItemDropDownForm}  label="数量">
+            {options.map(option => (
+              <MenuItem key={option} value={option}>
+                {option}
+              </MenuItem>
+            ))}
+          </Field>
+          <br></br>
           <br></br>
           <Button variant="outlined" onClick={InsertItemToCart}>カートに入れる</Button>
           <Button variant="outlined" style={{ margin: '3mm'}} onClick={() => navigate('/order')}>ご注文手続きへ</Button>
@@ -72,4 +89,8 @@ const ItemDetail = () => {
   )
 }
 
-export default ItemDetail
+// export default ItemDetail
+
+export default reduxForm({
+  form: 'orderForm',
+})(ItemDetail);
