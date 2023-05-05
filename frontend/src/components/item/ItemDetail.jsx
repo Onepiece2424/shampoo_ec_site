@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import logo from '../..//20230416_シャンプー画像.jpg'
@@ -18,6 +19,14 @@ const ItemDetail = () => {
   const id = params.id
   const navigate = useNavigate();
 
+  const form = useSelector(state => state.form);
+  const values = form && form.orderForm && form.orderForm.values;
+
+  // ドロップダウンメニューの選択範囲
+  const options = [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+  ];
+
   // 商品詳細データの取得
   useEffect(() => {
     fetchItemsDetail(id)
@@ -28,16 +37,8 @@ const ItemDetail = () => {
 
   // 商品をカートに入れる
   const InsertItemToCart = () => {
-    console.log('カートへ入れました。')
+    console.log(values.quantity)
   }
-
-  const options = [
-    // { value: 'apple', label: 'りんご' },
-    // { value: 'orange', label: 'オレンジ' },
-    // { value: 'grape', label: 'ぶどう' },
-    // { value: 'banana', label: 'バナナ' },
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10
-  ];
 
 
   return (
