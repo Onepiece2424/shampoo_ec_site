@@ -1,11 +1,31 @@
 import React from 'react'
+import { useDispatch ,useSelector } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { Button } from '@mui/material';
 
 // components
 import { renderTextField } from '../modules/renderTextField';
+import { verifyUserData } from '../../apis/signIn';
 
-const SignIn = () => {
+const SignIn = (props) => {
+
+  const { handleSubmit } = props;
+  const dispatch = useDispatch()
+  const form = useSelector(state => state.form);
+  const values = form && form.signInForm && form.signInForm.values;
+
+  // ユーザー情報（アドレスとパスワード）の送信
+  const submitLoginUserData = (e) => {
+    e.preventDefault();
+
+    const params = {
+      email: values.email,
+      password: values.password
+    }
+
+    verifyUserData(params, dispatch)
+  }
+
   return (
     <>
       <br></br>
@@ -13,7 +33,7 @@ const SignIn = () => {
         ログインページです。
       </div>
       <br></br>
-      <form>
+      <form onSubmit={handleSubmit}>
         <br></br>
         <Field
           name="email"
@@ -33,7 +53,7 @@ const SignIn = () => {
         />
         <br></br>
         <br></br>
-        <Button variant="outlined">ログイン</Button>
+        <Button variant="outlined" onClick={submitLoginUserData}>ログイン</Button>
       </form>
     </>
   )
