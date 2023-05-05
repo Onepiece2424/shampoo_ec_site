@@ -5,7 +5,6 @@ const initialState = {
 
 // reducer
 export const flagReducer = (state = initialState, action) => {
-  console.log(action)
   switch(action.type) {
     case 'CHANGE_FLAG':
       return { ...state, flag: action.payload }
