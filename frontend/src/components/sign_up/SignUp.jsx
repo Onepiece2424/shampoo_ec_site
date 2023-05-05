@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 // api
 import { userDataCreate } from '../../apis/signUp';
 
-// function
-import { pageTransitionFlag } from '../../reducks/reducers/common';
+
 
 const SignUp = () => {
   const [name, setName] = useState('');
@@ -21,7 +20,6 @@ const SignUp = () => {
   const pageFlag = useSelector(state => state.pageFlag)
   const dispatch = useDispatch()
   const navigate = useNavigate();
-  const location = useLocation();
 
   // ユーザーの新規登録
   const userDataSubmit = async(e) => {
@@ -43,21 +41,6 @@ const SignUp = () => {
       navigate('/sign_up_confirmation');
     }
   }, [pageFlag.flag, navigate]);
-
-
-  // ユーザー登録ページに来たとき、登録完了ページに切り替えるためのフラグ（state）を初期化
-  useEffect(() => {
-    const cleanupState = () => {
-      if (location.pathname === '/users/sign_up') {
-        dispatch(pageTransitionFlag(false))
-      }
-    };
-
-    return () => {
-      cleanupState();
-    };
-  }, [location.pathname, dispatch]);
-
 
   return (
     <form onSubmit={userDataSubmit}>
