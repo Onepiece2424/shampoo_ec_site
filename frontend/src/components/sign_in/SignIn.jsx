@@ -20,7 +20,7 @@ const SignIn = () => {
           component={renderTextField}
           label="メールアドレス"
           placeholder="メールアドレスを入力してください。"
-          style={{ width: 230 }}
+          style={{ width: 280 }}
         />
         <br></br>
         <br></br>
@@ -29,7 +29,7 @@ const SignIn = () => {
           component={renderTextField}
           label="パスワード"
           placeholder="パスワードを入力してください。"
-          style={{ width: 230 }}
+          style={{ width: 280 }}
         />
         <br></br>
         <br></br>
