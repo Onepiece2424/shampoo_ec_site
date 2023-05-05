@@ -1,23 +1,9 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form';
-import { Button, TextField } from '@mui/material';
+import { Button } from '@mui/material';
 
-const renderTextField = ({
-  input,
-  label,
-  placeholder,
-  meta: { touched, invalid, error },
-  ...custom
-}) => (
-  <TextField
-    label={label}
-    placeholder={placeholder}
-    error={touched && invalid}
-    helperText={touched && error}
-    {...input}
-    {...custom}
-  />
-);
+// components
+import { renderTextField } from '../modules/renderTextField';
 
 const SignIn = () => {
   return (
