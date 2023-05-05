@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux';
 
 // function
 import { fetchItems } from '../../apis/items'
+import { pageTransitionFlag } from '../../reducks/reducers/common';
 
 // components
 import MediaCard from '../Icons'
@@ -9,6 +11,7 @@ import { Link } from 'react-router-dom';
 
 const Top = () => {
   const [list, setList] = useState([])
+  const dispatch = useDispatch()
 
   // 商品一覧データの取得
   useEffect(() => {
@@ -17,6 +20,9 @@ const Top = () => {
       setList(data)
     )
   }, [])
+
+  // 一覧ページに切り替えるためのフラグ（state）を初期化
+  dispatch(pageTransitionFlag(false))
 
   return (
     <div>

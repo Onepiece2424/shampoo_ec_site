@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch ,useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
 import { Button } from '@mui/material';
 
@@ -13,6 +14,8 @@ const SignIn = (props) => {
   const dispatch = useDispatch()
   const form = useSelector(state => state.form);
   const values = form && form.signInForm && form.signInForm.values;
+  const pageFlag = useSelector(state => state.pageFlag)
+  const navigate = useNavigate();
 
   // ユーザー情報（アドレスとパスワード）の送信
   const submitLoginUserData = (e) => {
@@ -25,6 +28,13 @@ const SignIn = (props) => {
 
     verifyUserData(params, dispatch)
   }
+
+  // ログイン後、トップページ遷移
+  useEffect(() => {
+    if (pageFlag.flag) {
+      navigate('/');
+    }
+  }, [pageFlag.flag, navigate]);
 
   return (
     <>
