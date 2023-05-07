@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import logo from '../..//20230416_シャンプー画像.jpg'
@@ -11,6 +11,10 @@ import ItemDropDownForm from './ItemDropDownForm';
 
 // api
 import { fetchItemsDetail } from '../../apis/itemsDetail'
+import { fetchUserData } from '../../apis/fetchUserDara';
+
+// function
+import { createCart } from '../../apis/createCart';
 
 const ItemDetail = () => {
 
@@ -18,6 +22,7 @@ const ItemDetail = () => {
   const params = useParams();
   const id = params.id
   const navigate = useNavigate();
+  const dispatch = useDispatch()
 
   const form = useSelector(state => state.form);
   const values = form && form.orderForm && form.orderForm.values;
@@ -35,8 +40,19 @@ const ItemDetail = () => {
     )
   }, [id])
 
-  // 商品をカートに入れる
+  // ログインユーザーの取得
+  useEffect(() => {
+    const token = localStorage.getItem("access-token");
+    const client = localStorage.getItem("client");
+    const uid = localStorage.getItem("uid");
+    const params = { token: token, client: client, uid: uid }
+    fetchUserData(params)
+  }, [])
+
+  // カートの作成とカートに商品追加
   const InsertItemToCart = () => {
+    // const params = { quantity: values.quantity }
+    // createCart()
     console.log(values.quantity)
   }
 
