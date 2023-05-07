@@ -46,7 +46,7 @@ const ItemDetail = () => {
     const client = localStorage.getItem("client");
     const uid = localStorage.getItem("uid");
     const params = { token: token, client: client, uid: uid }
-    fetchUserData(params)
+    fetchUserData(params, dispatch)
   }, [])
 
   // カートの作成とカートに商品追加

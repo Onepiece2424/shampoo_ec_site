@@ -14,7 +14,7 @@ module Api
 
         @current_user = User.find_by(uid: uid)
         if @current_user && @current_user.valid_token?(token, client)
-          render json: { users: @current_user }, status: :ok
+          render json: { data: @current_user }, status: :ok
         else
           render json: { errors: "ログインしていません" }, status: :unauthorized
         end
