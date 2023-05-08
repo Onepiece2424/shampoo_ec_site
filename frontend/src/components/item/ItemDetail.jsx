@@ -42,12 +42,13 @@ const ItemDetail = () => {
 
   // ログインユーザーの取得
   useEffect(() => {
-    const token = localStorage.getItem("access-token");
-    const client = localStorage.getItem("client");
-    const uid = localStorage.getItem("uid");
-    const params = { token: token, client: client, uid: uid }
-    fetchUserData(params, dispatch)
-  }, [])
+    const userData = {
+      token: localStorage.getItem("access-token"),
+      client: localStorage.getItem("client"),
+      uid: localStorage.getItem("uid"),
+    };
+    fetchUserData(userData, dispatch)
+  }, [dispatch])
 
   // カートの作成とカートに商品追加
   const InsertItemToCart = () => {
