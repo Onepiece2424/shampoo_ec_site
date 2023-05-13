@@ -1,21 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
-
+import { Field, reduxForm } from 'redux-form';
+import { Button } from '@mui/material';
 // api
 import { userDataCreate } from '../../apis/signUp';
+// components
+import { renderTextField } from '../modules/renderTextField';
 
 
+const SignUp = (props) => {
 
-const SignUp = () => {
-  const [name, setName] = useState('');
-  // const [address, setAddress] = useState('');
-  // const [phonenumber, setPhoneNumber] = useState('');
-  // const [birthday, setBirthday] = useState('');
-  // const [gender, setGender] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [password_confirmation, setPasswordConfirmation] = useState('');
+  const { handleSubmit } = props;
+  const form = useSelector(state => state.form);
+  const values = form && form.signUpForm && form.signUpForm.values;
 
   const pageFlag = useSelector(state => state.pageFlag)
   const dispatch = useDispatch()
@@ -25,10 +23,10 @@ const SignUp = () => {
   const userDataSubmit = async(e) => {
     e.preventDefault();
     const params = {
-      email: email,
-      password: password,
-      password_confirmation: password_confirmation,
-      name: name,
+      name: values.name,
+      email: values.email,
+      password: values.password,
+      password_confirmation: values.password_confirmation
     }
 
     // ユーザー情報を送信
@@ -43,42 +41,50 @@ const SignUp = () => {
   }, [pageFlag.flag, navigate]);
 
   return (
-    <form onSubmit={userDataSubmit}>
-      <div>
-        <label htmlFor="name">名前</label>
-        <input type="name" id="name" value={name} onChange={(e) => setName(e.target.value)} />
-      </div>
-      <div>
-        <label htmlFor="email">メールアドレス</label>
-        <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-      </div>
-      <div>
-        <label htmlFor="password">パスワード</label>
-        <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      </div>
-      <div>
-        <label htmlFor="password-confirmation">パスワード確認</label>
-        <input type="password" id="password-confirmation" value={password_confirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} />
-      </div>
-      {/* <div>
-        <label htmlFor="address">住所</label>
-        <input type="address" id="address" value={address} onChange={(e) => setAddress(e.target.value)} />
-      </div>
-      <div>
-        <label htmlFor="phonenumber">電話番号</label>
-        <input type="phonenumber" id="phonenumber" value={phonenumber} onChange={(e) => setPhoneNumber(e.target.value)} />
-      </div>
-      <div>
-        <label htmlFor="birthday">誕生日</label>
-        <input type="birthday" id="birthday" value={birthday} onChange={(e) => setBirthday(e.target.value)} />
-      </div>
-      <div>
-        <label htmlFor="gender">性別</label>
-        <input type="gender" id="gender" value={gender} onChange={(e) => setGender(e.target.value)} />
-      </div> */}
-      <button type="submit">新規登録</button>
+    <form onSubmit={handleSubmit}>
+      <br></br>
+      <br></br>
+      <Field
+        name="name"
+        component={renderTextField}
+        label="名前"
+        placeholder="名前を入力してください。"
+        style={{ width: 280 }}
+      />
+      <br></br>
+      <br></br>
+      <Field
+        name="email"
+        component={renderTextField}
+        label="メールアドレス"
+        placeholder="メールアドレスを入力してください。"
+        style={{ width: 280 }}
+      />
+      <br></br>
+      <br></br>
+      <Field
+        name="password"
+        component={renderTextField}
+        label="パスワード"
+        placeholder="パスワードを入力してください。"
+        style={{ width: 280 }}
+      />
+      <br></br>
+      <br></br>
+      <Field
+        name="password-confirmation"
+        component={renderTextField}
+        label="パスワード確認"
+        placeholder="もう一度パスワードを入力してください。"
+        style={{ width: 280 }}
+      />
+      <br></br>
+      <br></br>
+      <Button variant="outlined" onClick={userDataSubmit}>新規登録</Button>
     </form>
   );
 };
 
-export default SignUp;
+export default reduxForm({
+  form: 'signUpForm',
+})(SignUp);
