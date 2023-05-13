@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import logo from '../..//20230416_シャンプー画像.jpg'
 import { Button, MenuItem } from '@mui/material';
 import { Field, reduxForm } from 'redux-form';
+import axios from 'axios';
 
 // components
 import ItemDropDownForm from './ItemDropDownForm';
@@ -52,11 +53,48 @@ const ItemDetail = () => {
 
   // カートの作成とカートに商品追加
   const InsertItemToCart = () => {
-    // const params = { quantity: values.quantity }
-    // createCart()
-    console.log(values.quantity)
+    // const userData = {
+    //   token: localStorage.getItem("access-token"),
+    //   client: localStorage.getItem("client"),
+    //   uid: localStorage.getItem("uid"),
+    // };
+
+    // localStorageからトークン情報を取得
+    const accessToken = localStorage.getItem('access-token');
+    const client = localStorage.getItem('client');
+    const uid = localStorage.getItem('uid');
+
+    // axiosのデフォルトリクエストヘッダにトークン情報を設定
+    axios.defaults.headers.common['access-token'] = accessToken;
+    axios.defaults.headers.common['client'] = client;
+    axios.defaults.headers.common['uid'] = uid;
+
+    const headers = {
+      'access-token': accessToken,
+      'client': client,
+      'uid': uid
+    };
+
+    axios.defaults.headers.common = headers;
+
+    // 商品の数量
+    // const params = values && values.quantity && { quantity: values.quantity }
+
+  const api = axios.create({
+    baseURL: 'http://localhost:3010/api/v1',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  if (accessToken && client && uid) {
+    api.defaults.headers.common['access-token'] = accessToken;
+    api.defaults.headers.common['client'] = client;
+    api.defaults.headers.common['uid'] = uid;
   }
 
+    createCart(headers)
+  }
 
   return (
     <div className="contents">
