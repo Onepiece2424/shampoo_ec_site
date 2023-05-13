@@ -11,14 +11,11 @@ export const verifyUserData = async(params, dispatch) => {
       dispatch(dispatchUserData(response));
       dispatch(pageTransitionFlag(true));
 
-      // 取得したトークン情報をlocalStorageなどに保存
-      const { data } = response;
-      const { user } = data
-      const token = user['access_token'];
-      const client = user['client'];
-      const uid = user['uid'];
+      // 取得したresponseからdataプロパティのuserプロパティの中にあるaccess_tokenなどを分割代入で抽出
+      const { data: { user, user: { access_token, client, uid } } } = response;
 
-      localStorage.setItem('access-token', token);
+      // 取得したトークン情報をlocalStorageなどに保存
+      localStorage.setItem('access-token', access_token);
       localStorage.setItem('client', client);
       localStorage.setItem('uid', uid);
 
