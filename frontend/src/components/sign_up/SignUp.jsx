@@ -41,47 +41,54 @@ const SignUp = (props) => {
   }, [pageFlag.flag, navigate]);
 
   return (
-    <form onSubmit={handleSubmit}>
+    <>
       <br></br>
+      <div>
+        ユーザー登録ページです。
+      </div>
       <br></br>
-      <Field
-        name="name"
-        component={renderTextField}
-        label="名前"
-        placeholder="名前を入力してください。"
-        style={{ width: 280 }}
-      />
-      <br></br>
-      <br></br>
-      <Field
-        name="email"
-        component={renderTextField}
-        label="メールアドレス"
-        placeholder="メールアドレスを入力してください。"
-        style={{ width: 280 }}
-      />
-      <br></br>
-      <br></br>
-      <Field
-        name="password"
-        component={renderTextField}
-        label="パスワード"
-        placeholder="パスワードを入力してください。"
-        style={{ width: 280 }}
-      />
-      <br></br>
-      <br></br>
-      <Field
-        name="password-confirmation"
-        component={renderTextField}
-        label="パスワード確認"
-        placeholder="もう一度パスワードを入力してください。"
-        style={{ width: 280 }}
-      />
-      <br></br>
-      <br></br>
-      <Button variant="outlined" onClick={userDataSubmit}>新規登録</Button>
-    </form>
+      <form onSubmit={handleSubmit}>
+        <br></br>
+        <br></br>
+        <Field
+          name="name"
+          component={renderTextField}
+          label="名前"
+          placeholder="名前を入力してください。"
+          style={{ width: 280 }}
+        />
+        <br></br>
+        <br></br>
+        <Field
+          name="email"
+          component={renderTextField}
+          label="メールアドレス"
+          placeholder="メールアドレスを入力してください。"
+          style={{ width: 280 }}
+        />
+        <br></br>
+        <br></br>
+        <Field
+          name="password"
+          component={renderTextField}
+          label="パスワード"
+          placeholder="パスワードを入力してください。"
+          style={{ width: 280 }}
+        />
+        <br></br>
+        <br></br>
+        <Field
+          name="password-confirmation"
+          component={renderTextField}
+          label="パスワード確認"
+          placeholder="もう一度パスワードを入力してください。"
+          style={{ width: 280 }}
+        />
+        <br></br>
+        <br></br>
+        <Button variant="outlined" onClick={userDataSubmit}>新規登録</Button>
+      </form>
+    </>
   );
 };
 
