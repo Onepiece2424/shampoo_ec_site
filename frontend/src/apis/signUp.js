@@ -10,6 +10,7 @@ export const userDataCreate = async(params, dispatch) => {
     .then(data => {
       dispatch(dispatchUserData(data));
 
+      // 取得したresponseより、アクセストークンなどを変数に代入
       const accessToken = data.headers['access-token'];
       const client = data.headers['client'];
       const uid = data.headers['uid'];
@@ -18,8 +19,6 @@ export const userDataCreate = async(params, dispatch) => {
       localStorage.setItem('access-token', accessToken);
       localStorage.setItem('client', client);
       localStorage.setItem('uid', uid);
-
-      // axios.post(registerTokenUrl, data)
 
       dispatch(pageTransitionFlag(true))
     }).catch(error => {
