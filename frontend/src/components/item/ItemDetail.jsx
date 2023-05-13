@@ -80,18 +80,18 @@ const ItemDetail = () => {
     // 商品の数量
     // const params = values && values.quantity && { quantity: values.quantity }
 
-  const api = axios.create({
-    baseURL: 'http://localhost:3010/api/v1',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
+    const api = axios.create({
+      baseURL: 'http://localhost:3010/api/v1',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
-  if (accessToken && client && uid) {
-    api.defaults.headers.common['access-token'] = accessToken;
-    api.defaults.headers.common['client'] = client;
-    api.defaults.headers.common['uid'] = uid;
-  }
+    if (accessToken && client && uid) {
+      api.defaults.headers.common['access-token'] = accessToken;
+      api.defaults.headers.common['client'] = client;
+      api.defaults.headers.common['uid'] = uid;
+    }
 
     createCart(headers)
   }
