@@ -10,7 +10,18 @@ class Api::V1::Auth::SessionsController < DeviseTokenAuth::SessionsController
   def create
     user = User.find_by(email: params[:email])
     if user&.valid_password?(params[:password])
-      render json: user, status: :ok
+
+      # トークンを生成
+      token = user.create_new_auth_token
+
+      # トークン情報をJSON形式で返す
+      render json: {
+        user: user.as_json.merge({
+          access_token: token['access-token'],
+          client: token['client'],
+          uid: token['uid']
+        })
+      }, status: :ok
     else
       render json: { error: 'Invalid email or password' }, status: :unauthorized
     end
