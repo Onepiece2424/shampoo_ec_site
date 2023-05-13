@@ -12,14 +12,15 @@ export const verifyUserData = async(params, dispatch) => {
       dispatch(pageTransitionFlag(true));
 
       // 取得したトークン情報をlocalStorageなどに保存
-      // const { data } = response;
-      // const token = data['access-token'];
-      // const client = data['client'];
-      // const uid = data['uid'];
+      const { data } = response;
+      const { user } = data
+      const token = user['access_token'];
+      const client = user['client'];
+      const uid = user['uid'];
 
-      // localStorage.setItem('access-token', token);
-      // localStorage.setItem('client', client);
-      // localStorage.setItem('uid', uid);
+      localStorage.setItem('access-token', token);
+      localStorage.setItem('client', client);
+      localStorage.setItem('uid', uid);
 
     }).catch(error => {
       console.log(error);
