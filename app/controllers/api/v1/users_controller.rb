@@ -1,6 +1,8 @@
 module Api
   module V1
     class UsersController < ApplicationController
+      before_action :authenticate_api_v1_user!
+
       def index
         users = User.all
         render json: { users: users }, status: :ok
@@ -8,7 +10,7 @@ module Api
 
       # ログインユーザーデータの取得
       def fetch_userdata
-        token = params[:token]
+        token = params["access-token"]
         client = params[:client]
         uid = params[:uid]
 

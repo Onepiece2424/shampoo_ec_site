@@ -43,12 +43,38 @@ const ItemDetail = () => {
 
   // ログインユーザーの取得
   useEffect(() => {
-    const userData = {
-      token: localStorage.getItem("access-token"),
-      client: localStorage.getItem("client"),
-      uid: localStorage.getItem("uid"),
+    // localStorageからトークン情報を取得
+    const accessToken = localStorage.getItem('access-token');
+    const client = localStorage.getItem('client');
+    const uid = localStorage.getItem('uid');
+
+    // axiosのデフォルトリクエストヘッダにトークン情報を設定
+    axios.defaults.headers.common['access-token'] = accessToken;
+    axios.defaults.headers.common['client'] = client;
+    axios.defaults.headers.common['uid'] = uid;
+
+    const headers = {
+      'access-token': accessToken,
+      'client': client,
+      'uid': uid
     };
-    fetchUserData(userData, dispatch)
+
+    axios.defaults.headers.common = headers;
+
+    const api = axios.create({
+      baseURL: 'http://localhost:3010/api/v1',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (accessToken && client && uid) {
+      api.defaults.headers.common['access-token'] = accessToken;
+      api.defaults.headers.common['client'] = client;
+      api.defaults.headers.common['uid'] = uid;
+    }
+
+    fetchUserData(headers, dispatch)
   }, [dispatch])
 
   // カートの作成とカートに商品追加
