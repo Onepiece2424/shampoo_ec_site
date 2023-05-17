@@ -46,7 +46,7 @@ module ShampooEcSite
     # devise-token-authの設定
     config.middleware.use Rack::Cors do
       allow do
-        origins '*'
+        origins 'http://localhost:3000', "https://web.shampoo-ecsite.site"
         resource '*',
           headers: :any,
           expose: ['access-token', 'expiry', 'token-type', 'uid', 'client'],
