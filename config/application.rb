@@ -44,14 +44,14 @@ module ShampooEcSite
     config.action_controller.allow_forgery_protection = false
 
     # devise-token-authの設定
-    # config.middleware.use Rack::Cors do
-    #   allow do
-    #     origins '*'
-    #     resource '*',
-    #       headers: :any,
-    #       expose: ['access-token', 'expiry', 'token-type', 'uid', 'client'],
-    #       methods: [:get, :post, :options, :delete, :put]
-    #   end
-    # end
+    config.middleware.use Rack::Cors do
+      allow do
+        origins '*'
+        resource '*',
+          headers: :any,
+          expose: ['access-token', 'expiry', 'token-type', 'uid', 'client'],
+          methods: [:get, :post, :options, :delete, :put]
+      end
+    end
   end
 end
