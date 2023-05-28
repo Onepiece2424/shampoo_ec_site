@@ -3,6 +3,22 @@ module Api
     class CartsController < ApplicationController
       before_action :authenticate_api_v1_user!
 
+      def index
+        cart_items = current_api_v1_user.cart.cart_items
+
+        # 商品データ（商品名、金額、説明）
+        
+
+        # 商品合計金額
+        total = 0
+        cart_items.each do |cart_item|
+          total += cart_item.quantity * cart_item.item.price
+        end
+        total
+
+        render json: { cart_items: cart_items, total: total }, status: :ok
+      end
+
       def create
         cart = current_api_v1_user.cart || Cart.create(user_id: current_api_v1_user.id)
         item = Item.find_by(name: params[:name])

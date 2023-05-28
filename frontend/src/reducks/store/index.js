@@ -5,11 +5,13 @@ import thunk from 'redux-thunk';
 import { reducer as reduxFormReducer } from 'redux-form';
 import { userReducer } from "../reducers/user";
 import { flagReducer } from "../reducers/common";
+import { cartReducer } from "../reducers/cart";
 
 export const rootReducer = combineReducers({
   form: reduxFormReducer,
   user: userReducer,
   pageFlag: flagReducer,
+  cart: cartReducer,
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -9,4 +9,5 @@ export const userDataUrl = `${DEFAULT_API_LOCALHOST}/users/fetch_userdata`
 export const itemsIndex = `${DEFAULT_API_LOCALHOST}/items`
 export const itemsDetail = (itemId) => `${DEFAULT_API_LOCALHOST}/items/${itemId}`
 
+export const cartsIndex = `${DEFAULT_API_LOCALHOST}/carts`
 export const createCarturl = `${DEFAULT_API_LOCALHOST}/carts`
