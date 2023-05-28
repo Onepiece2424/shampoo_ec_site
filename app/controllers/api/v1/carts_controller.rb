@@ -7,7 +7,15 @@ module Api
         cart_items = current_api_v1_user.cart.cart_items
 
         # 商品データ（商品名、金額、説明）
-        
+        items_data = cart_items.map do |cart_item|
+          {
+            id: cart_item.item.id,
+            item_name: cart_item.item.name,
+            quantity: cart_item.quantity,
+            price: cart_item.item.price,
+            description: cart_item.item.description
+          }
+        end
 
         # 商品合計金額
         total = 0
@@ -16,7 +24,7 @@ module Api
         end
         total
 
-        render json: { cart_items: cart_items, total: total }, status: :ok
+        render json: { items: items_data, total: total }, status: :ok
       end
 
       def create
