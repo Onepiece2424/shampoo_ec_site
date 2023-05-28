@@ -119,7 +119,10 @@ const ItemDetail = () => {
       api.defaults.headers.common['uid'] = uid;
     }
 
-    createCart(headers)
+    const ItemName = item && item.name
+    const quantity = values.quantity
+
+    createCart(ItemName, quantity, headers)
   }
 
   return (
