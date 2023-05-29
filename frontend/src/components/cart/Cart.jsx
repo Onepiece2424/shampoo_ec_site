@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Card, CardContent, CardMedia, Typography, Grid, Button } from '@mui/material';
 
@@ -12,6 +13,7 @@ import logo from '../..//20230416_シャンプー画像.jpg'
 const Cart = () => {
   const cart = useSelector(state => state.cart)
   const dispatch = useDispatch()
+  const navigate = useNavigate();
 
   // カートデータの取得
   useEffect(() => {
@@ -49,6 +51,11 @@ const Cart = () => {
     fetchCartData(headers, dispatch)
   }, [dispatch])
 
+  // 注文ページへ
+  const GoToOrderPage = () => {
+    navigate('/order');
+  }
+
   return (
     <div>
       カートページです。
@@ -81,7 +88,7 @@ const Cart = () => {
       })}
       <div style={{ margin: '20px', display: 'flex' }}>
         <Typography style={{ minWidth: '50%' }}>合計金額：¥{cart.total_price}</Typography>
-        <Button variant="contained" style={{ minWidth: '50%' }}>注文手続きへ</Button>
+        <Button variant="contained" style={{ minWidth: '50%' }} onClick={GoToOrderPage}>注文手続きへ</Button>
       </div>
     </div>
   )
