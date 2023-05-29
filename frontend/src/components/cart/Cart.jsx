@@ -79,6 +79,8 @@ const Cart = () => {
           </Card>
         )
       })}
+      <br></br>
+      <Typography>合計金額：¥{cart.total_price}</Typography>
     </div>
   )
 }
