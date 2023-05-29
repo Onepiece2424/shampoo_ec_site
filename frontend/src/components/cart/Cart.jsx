@@ -1,11 +1,14 @@
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
+import { Card, CardContent, CardMedia, Typography, Grid } from '@mui/material';
 
 // api
 import { fetchCartData } from '../../apis/fetchCartData';
 
+
 const Cart = () => {
+  const cart = useSelector(state => state.cart)
   const dispatch = useDispatch()
 
   // カートデータの取得
@@ -47,6 +50,33 @@ const Cart = () => {
   return (
     <div>
       カートページです。
+      {cart.item.map((item) => {
+        return (
+          <Card style={{ margin: '10px' }}>
+            <Grid container>
+              <Grid item xs={12} sm={6} md={4} lg={3}>
+                <CardMedia component="img" sx={{ height: 200 }} />
+              </Grid>
+              <Grid item xs={12} sm={6} md={8} lg={9}>
+                <CardContent>
+                  <Typography variant="h5" component="div">
+                    {item.item_name}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {item.description}
+                  </Typography>
+                  <Typography variant="h6" component="div">
+                    価格: ¥{item.price}
+                  </Typography>
+                  <Typography variant="body1" component="div">
+                    数量: {item.quantity}
+                  </Typography>
+                </CardContent>
+              </Grid>
+            </Grid>
+          </Card>
+        )
+      })}
     </div>
   )
 }
