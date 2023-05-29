@@ -6,6 +6,8 @@ import { Card, CardContent, CardMedia, Typography, Grid } from '@mui/material';
 // api
 import { fetchCartData } from '../../apis/fetchCartData';
 
+// 画像
+import logo from '../..//20230416_シャンプー画像.jpg'
 
 const Cart = () => {
   const cart = useSelector(state => state.cart)
@@ -55,7 +57,7 @@ const Cart = () => {
           <Card style={{ margin: '10px' }}>
             <Grid container>
               <Grid item xs={12} sm={6} md={4} lg={3}>
-                <CardMedia component="img" sx={{ height: 200 }} />
+                <CardMedia image={logo} sx={{ height: 200 }} />
               </Grid>
               <Grid item xs={12} sm={6} md={8} lg={9}>
                 <CardContent>
