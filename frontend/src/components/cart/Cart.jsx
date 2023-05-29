@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
-import { Card, CardContent, CardMedia, Typography, Grid } from '@mui/material';
+import { Card, CardContent, CardMedia, Typography, Grid, Button } from '@mui/material';
 
 // api
 import { fetchCartData } from '../../apis/fetchCartData';
@@ -79,8 +79,10 @@ const Cart = () => {
           </Card>
         )
       })}
-      <br></br>
-      <Typography>合計金額：¥{cart.total_price}</Typography>
+      <div style={{ margin: '20px', display: 'flex' }}>
+        <Typography style={{ minWidth: '50%' }}>合計金額：¥{cart.total_price}</Typography>
+        <Button variant="contained" style={{ minWidth: '50%' }}>注文手続きへ</Button>
+      </div>
     </div>
   )
 }
