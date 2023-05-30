@@ -57,8 +57,7 @@ const Cart = () => {
   }
 
   return (
-    <div>
-      カートページです。
+    <div style={{ padding: '10px'}}>
       {cart.item.map((item) => {
         return (
           <Card style={{ margin: '10px' }}>
