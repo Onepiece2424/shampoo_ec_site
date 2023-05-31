@@ -58,9 +58,9 @@ const Cart = () => {
 
   return (
     <div style={{ padding: '10px'}}>
-      {cart.item.map((item) => {
+      {cart.item.map((item, index) => {
         return (
-          <Card style={{ margin: '10px' }}>
+          <Card style={{ margin: '10px' }} key={index}>
             <Grid container>
               <Grid item xs={12} sm={6} md={4} lg={3}>
                 <CardMedia image={logo} sx={{ height: 200 }} />
