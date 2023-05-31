@@ -1,5 +1,4 @@
 import React from 'react'
-import store from '../../reducks/store'
 import { Field, reduxForm } from 'redux-form';
 // components
 import { renderTextField } from '../modules/renderTextField';
