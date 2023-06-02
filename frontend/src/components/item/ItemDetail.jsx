@@ -79,11 +79,6 @@ const ItemDetail = () => {
 
   // カートの作成とカートに商品追加
   const InsertItemToCart = () => {
-    // const userData = {
-    //   token: localStorage.getItem("access-token"),
-    //   client: localStorage.getItem("client"),
-    //   uid: localStorage.getItem("uid"),
-    // };
 
     // localStorageからトークン情報を取得
     const accessToken = localStorage.getItem('access-token');
@@ -103,9 +98,6 @@ const ItemDetail = () => {
 
     axios.defaults.headers.common = headers;
 
-    // 商品の数量
-    // const params = values && values.quantity && { quantity: values.quantity }
-
     const api = axios.create({
       baseURL: 'http://localhost:3010/api/v1',
       headers: {
@@ -119,6 +111,7 @@ const ItemDetail = () => {
       api.defaults.headers.common['uid'] = uid;
     }
 
+    // 商品の名前と数量のデータ
     const ItemName = item && item.name
     const quantity = values.quantity
 
