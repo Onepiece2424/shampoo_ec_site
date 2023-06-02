@@ -30,13 +30,19 @@ module Api
       def create
         cart = current_api_v1_user.cart || Cart.create(user_id: current_api_v1_user.id)
         item = Item.find_by(name: params[:name])
+        response = {}
 
         if item
           cart_item = CartItem.create(cart_id: cart.id, item_id: item.id, quantity: params[:quantity])
           item.update(stock: item.stock - params[:quantity]) if cart_item.valid?
+          response[:cart] = cart
+          response[:item] = item
+          response[:message] = "商品がカートに正常に追加されました。"
+        else
+          response[:error] = "商品が見つかりません。"
         end
 
-        render json: { users: current_api_v1_user }, status: :ok
+        render json: response, status: :ok
       end
 
 
