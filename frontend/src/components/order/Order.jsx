@@ -15,13 +15,15 @@ const Addressee = (props) => {
       <form onSubmit={handleSubmit}>
         <div>
           <div>お届け先</div>
-          <Field
-            name="address"
-            component={renderTextField}
-            label="お届け先"
-            placeholder="お届け先を入力してください。"
-            style={{ width: 280 }}
-          />
+          <div>
+            <Field
+              name="address"
+              component={renderTextField}
+              label="お届け先"
+              placeholder="お届け先を入力してください。"
+              style={{ width: 200 }}
+            />
+          </div>
         </div>
         <br></br>
         <br></br>
@@ -35,25 +37,29 @@ const Addressee = (props) => {
             // style={{ width: 280 }}
           />
           <br></br>
-          <Field
-            name="appointed_delivery_time"
-            component={renderTextField}
-            label="お届け希望時間帯"
-            placeholder="お届け希望時間帯を入力してください。"
-            style={{ width: 280 }}
-          />
+          <div>
+            <Field
+              name="appointed_delivery_time"
+              component={renderTextField}
+              label="お届け希望時間帯"
+              placeholder="お届け希望時間帯を入力してください。"
+              style={{ width: 200 }}
+            />
+          </div>
         </div>
         <br></br>
         <br></br>
         <div>
           <div>支払い方法</div>
-          <Field
-            name="how_to_payment"
-            component={renderTextField}
-            label="支払い方法"
-            placeholder="支払い方法を入力してください。"
-            style={{ width: 280 }}
-          />
+          <div>
+            <Field
+              name="how_to_payment"
+              component={renderTextField}
+              label="支払い方法"
+              placeholder="支払い方法を入力してください。"
+              style={{ width: 200 }}
+            />
+          </div>
         </div>
       </form>
     </div>
