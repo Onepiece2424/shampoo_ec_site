@@ -5,7 +5,6 @@ import Typography from '@mui/material/Typography';
 import logo from '../..//20230416_シャンプー画像.jpg'
 import { Button, MenuItem } from '@mui/material';
 import { Field, reduxForm } from 'redux-form';
-import axios from 'axios';
 
 // components
 import ItemDropDownForm from './ItemDropDownForm';
