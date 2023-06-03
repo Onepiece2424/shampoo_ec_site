@@ -1,10 +1,10 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 // components
 import { renderTextField } from '../modules/renderTextField';
 import DatePickerField from './DatePickerField';
 import TimePickerField from './TimePickerField';
+import renderRadioGroup from './renderRadioGroup';
 
 const Addressee = (props) => {
 
@@ -56,8 +56,7 @@ const Addressee = (props) => {
           <div>
             <Field
               name="how_to_payment"
-              component={renderTextField}
-              label="支払い方法"
+              component={renderRadioGroup}
               placeholder="支払い方法を入力してください。"
               style={{ width: 200 }}
             />
