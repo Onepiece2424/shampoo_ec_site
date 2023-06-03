@@ -14,7 +14,7 @@ const DatePickerField = ({
         {...custom}
         value={value || null}
         onChange={onChange}
-        renderInput={(params) =>
+        textField={(params) =>
           <TextField {...params} error={touched && error} />
         }
       />
