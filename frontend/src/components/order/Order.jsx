@@ -1,8 +1,10 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 // components
 import { renderTextField } from '../modules/renderTextField';
 import DatePickerField from './DatePickerField';
+import TimePickerField from './TimePickerField';
 
 const Addressee = (props) => {
 
@@ -29,21 +31,21 @@ const Addressee = (props) => {
         <br></br>
         <div>
           <div>お届け希望日時</div>
-          <Field
-            name="appointed_delivery_date"
-            component={DatePickerField}
-            label="お届け予定日"
-            placeholder="お届け予定日を入力してください。"
-            // style={{ width: 280 }}
-          />
+          <div style={{margin: '10px 0'}}>
+            <Field
+              name="appointed_delivery_date"
+              component={DatePickerField}
+              label="お届け予定日"
+              placeholder="お届け予定日を入力してください。"
+            />
+          </div>
           <br></br>
           <div>
             <Field
               name="appointed_delivery_time"
-              component={renderTextField}
+              component={TimePickerField}
               label="お届け希望時間帯"
               placeholder="お届け希望時間帯を入力してください。"
-              style={{ width: 200 }}
             />
           </div>
         </div>
