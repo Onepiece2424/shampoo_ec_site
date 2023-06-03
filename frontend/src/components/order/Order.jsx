@@ -1,12 +1,13 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form';
 import { useModal } from 'react-hooks-use-modal';
+import { Button, Card } from '@mui/material';
 
 // components
 import DatePickerField from './DatePickerField';
 import TimePickerField from './TimePickerField';
 import renderRadioGroup from './renderRadioGroup';
-import { Button, Card } from '@mui/material';
+import AddressChangeForm from './AddressChangeForm';
 
 const Addressee = (props) => {
 
@@ -15,12 +16,6 @@ const Addressee = (props) => {
   const [Modal, open, close, isOpen] = useModal('root', {
     preventScroll: true
   });
-
-  const modalStyle = {
-    backgroundColor: '#fff',
-    padding: '60px 75px',
-    borderRadius: '10px',
-  };
 
   return (
     <div>
@@ -37,13 +32,7 @@ const Addressee = (props) => {
           <div>
             <Button variant="outlined" onClick={open}>変更する</Button>
           </div>
-          <Modal>
-            <div style={modalStyle}>
-              <h1>Title</h1>
-              <p>This is a customizable modal.</p>
-              <Button onClick={close}>CLOSE</Button>
-            </div>
-          </Modal>
+          <AddressChangeForm Modal={Modal} isOpen={isOpen} close={close} />
         </div>
         <br></br>
         <br></br>
