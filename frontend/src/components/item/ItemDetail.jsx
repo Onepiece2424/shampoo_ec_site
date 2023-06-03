@@ -80,42 +80,11 @@ const ItemDetail = () => {
   // カートの作成とカートに商品追加
   const InsertItemToCart = () => {
 
-    // localStorageからトークン情報を取得
-    const accessToken = localStorage.getItem('access-token');
-    const client = localStorage.getItem('client');
-    const uid = localStorage.getItem('uid');
-
-    // axiosのデフォルトリクエストヘッダにトークン情報を設定
-    axios.defaults.headers.common['access-token'] = accessToken;
-    axios.defaults.headers.common['client'] = client;
-    axios.defaults.headers.common['uid'] = uid;
-
-    const headers = {
-      'access-token': accessToken,
-      'client': client,
-      'uid': uid
-    };
-
-    axios.defaults.headers.common = headers;
-
-    const api = axios.create({
-      baseURL: 'http://localhost:3010/api/v1',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-
-    if (accessToken && client && uid) {
-      api.defaults.headers.common['access-token'] = accessToken;
-      api.defaults.headers.common['client'] = client;
-      api.defaults.headers.common['uid'] = uid;
-    }
-
     // 商品の名前と数量のデータ
     const ItemName = item && item.name
     const quantity = values.quantity
 
-    createCart(ItemName, quantity, headers)
+    createCart(ItemName, quantity)
   }
 
   return (
