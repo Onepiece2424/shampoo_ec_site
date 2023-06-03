@@ -1,7 +1,8 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form';
+import { useModal } from 'react-hooks-use-modal';
+
 // components
-import { renderTextField } from '../modules/renderTextField';
 import DatePickerField from './DatePickerField';
 import TimePickerField from './TimePickerField';
 import renderRadioGroup from './renderRadioGroup';
@@ -10,6 +11,16 @@ import { Button, Card } from '@mui/material';
 const Addressee = (props) => {
 
   const { handleSubmit } = props;
+
+  const [Modal, open, close, isOpen] = useModal('root', {
+    preventScroll: true
+  });
+
+  const modalStyle = {
+    backgroundColor: '#fff',
+    padding: '60px 75px',
+    borderRadius: '10px',
+  };
 
   return (
     <div>
@@ -24,8 +35,15 @@ const Addressee = (props) => {
               <div>電話番号：090-1111-1111</div>
             </Card>
           <div>
-            <Button variant="outlined">変更する</Button>
+            <Button variant="outlined" onClick={open}>変更する</Button>
           </div>
+          <Modal>
+            <div style={modalStyle}>
+              <h1>Title</h1>
+              <p>This is a customizable modal.</p>
+              <Button onClick={close}>CLOSE</Button>
+            </div>
+          </Modal>
         </div>
         <br></br>
         <br></br>
