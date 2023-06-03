@@ -23,21 +23,22 @@ const Addressee = (props) => {
       <br></br>
       <form onSubmit={handleSubmit}>
         <div>
-          <div>お届け先</div>
+          <h3>お届け先</h3>
+          <div style={{ margin: '10px 0' }}>
             <Card variant="outlined" style={{ margin: '10px 40px' }} >
               <div>氏名：テスト太郎</div>
               <div>郵便番号：111-1111</div>
               <div>電話番号：090-1111-1111</div>
             </Card>
-          <div>
-            <Button variant="outlined" onClick={open}>変更する</Button>
+          </div>
+          <div style={{ margin: '20px 0' }}>
+            <Button variant="outlined" onClick={open}>お届け先を変更する</Button>
           </div>
           <AddressChangeForm Modal={Modal} isOpen={isOpen} close={close} />
         </div>
         <br></br>
-        <br></br>
         <div>
-          <div>お届け希望日時</div>
+          <h3>お届け希望日時</h3>
           <div style={{margin: '10px 0'}}>
             <Field
               name="appointed_delivery_date"
@@ -59,7 +60,7 @@ const Addressee = (props) => {
         <br></br>
         <br></br>
         <div>
-          <div>支払い方法</div>
+          <h3>支払い方法</h3>
           <div>
             <Field
               name="how_to_payment"
