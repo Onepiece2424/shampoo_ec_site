@@ -14,8 +14,10 @@ const FieldWrapper = styled.div`
   margin: 10px 0;
 `;
 
-const CloseButton = styled(Button)`
-  margin: 0 10px;
+const ButtonWrapper = styled.div`
+  display: flex;
+  gap: 15px;
+  margin: 0 15px;
 `;
 
 const AddressChangeForm = ({ Modal, close }) => {
@@ -47,8 +49,10 @@ const AddressChangeForm = ({ Modal, close }) => {
           </FieldWrapper>
         </div>
         <div>
-          <CloseButton onClick={close}>閉じる</CloseButton>
-          <CloseButton onClick={close}>変更する</CloseButton>
+          <ButtonWrapper>
+            <Button onClick={close}>閉じる</Button>
+            <Button onClick={close}>変更する</Button>
+          </ButtonWrapper>
         </div>
       </ModalWrapper>
     </Modal>
