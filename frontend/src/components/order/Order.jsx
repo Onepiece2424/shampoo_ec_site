@@ -5,6 +5,7 @@ import { renderTextField } from '../modules/renderTextField';
 import DatePickerField from './DatePickerField';
 import TimePickerField from './TimePickerField';
 import renderRadioGroup from './renderRadioGroup';
+import { Button, Card } from '@mui/material';
 
 const Addressee = (props) => {
 
@@ -17,14 +18,13 @@ const Addressee = (props) => {
       <form onSubmit={handleSubmit}>
         <div>
           <div>お届け先</div>
+            <Card variant="outlined" style={{ margin: '10px 40px' }} >
+              <div>氏名：テスト太郎</div>
+              <div>郵便番号：111-1111</div>
+              <div>電話番号：090-1111-1111</div>
+            </Card>
           <div>
-            <Field
-              name="address"
-              component={renderTextField}
-              label="お届け先"
-              placeholder="お届け先を入力してください。"
-              style={{ width: 200 }}
-            />
+            <Button variant="outlined">変更する</Button>
           </div>
         </div>
         <br></br>
