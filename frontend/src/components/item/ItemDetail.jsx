@@ -17,6 +17,9 @@ import { fetchUserData } from '../../apis/fetchUserDara';
 // function
 import { createCart } from '../../apis/createCart';
 
+// modules
+import { setupAxiosHeaders, createAPIInstance } from '../../modules/accessUserData';
+
 const ItemDetail = () => {
 
   const [item, setItem] = useState()
@@ -43,38 +46,14 @@ const ItemDetail = () => {
 
   // ログインユーザーの取得
   useEffect(() => {
-    // localStorageからトークン情報を取得
     const accessToken = localStorage.getItem('access-token');
     const client = localStorage.getItem('client');
     const uid = localStorage.getItem('uid');
 
-    // axiosのデフォルトリクエストヘッダにトークン情報を設定
-    axios.defaults.headers.common['access-token'] = accessToken;
-    axios.defaults.headers.common['client'] = client;
-    axios.defaults.headers.common['uid'] = uid;
+    setupAxiosHeaders(accessToken, client, uid);
+    const api = createAPIInstance(accessToken, client, uid);
 
-    const headers = {
-      'access-token': accessToken,
-      'client': client,
-      'uid': uid
-    };
-
-    axios.defaults.headers.common = headers;
-
-    const api = axios.create({
-      baseURL: 'http://localhost:3010/api/v1',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-
-    if (accessToken && client && uid) {
-      api.defaults.headers.common['access-token'] = accessToken;
-      api.defaults.headers.common['client'] = client;
-      api.defaults.headers.common['uid'] = uid;
-    }
-
-    fetchUserData(headers, dispatch)
+    fetchUserData(api.defaults.headers.common, dispatch)
   }, [dispatch])
 
   // カートの作成とカートに商品追加
