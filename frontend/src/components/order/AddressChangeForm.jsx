@@ -56,7 +56,6 @@ const AddressChangeForm = ({ Modal, close }) => {
   // お届け先変更
   const addressChange = () => {
     close()
-    console.log('お届け先を変更します。')
   }
 
   return (
