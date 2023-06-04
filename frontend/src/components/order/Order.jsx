@@ -69,8 +69,7 @@ const Addressee = (props) => {
             />
           </div>
         </div>
-        <br />
-        <br />
+        <br></br>
         <div>
           <h3>支払い方法</h3>
           <div>
@@ -81,6 +80,13 @@ const Addressee = (props) => {
               style={{ width: 200 }}
             />
           </div>
+        </div>
+        <div>
+          <h3>合計金額</h3>
+          <div>¥</div>
+        </div>
+        <div>
+          <StyledButton variant="contained" style={{ margin: '15px 0' }}>注文確定</StyledButton>
         </div>
       </form>
     </div>
