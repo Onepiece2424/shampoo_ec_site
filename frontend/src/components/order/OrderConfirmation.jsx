@@ -8,7 +8,7 @@ const StyledButton = styled(Button)`
   margin: 20px 0;
 `;
 
-const OrderConfirmation = () => {
+const OrderConfirmation = ({ setPage }) => {
 
   const form = useSelector(state => state.form);
   const values = form && form.orderForm && form.orderForm.values;
@@ -39,7 +39,7 @@ const OrderConfirmation = () => {
         <div>{values.how_to_payment}</div>
       </div>
       <div style={{ margin: '10px 0'}}>
-        <StyledButton variant="contained" style={{ margin: '0 10px'}}>1つ前に戻る</StyledButton>
+        <StyledButton variant="contained" style={{ margin: '0 10px'}} onClick={() => setPage(false)}>1つ前に戻る</StyledButton>
         <StyledButton variant="contained" style={{ margin: '0 10px'}}>注文確定</StyledButton>
       </div>
     </div>

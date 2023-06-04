@@ -10,7 +10,7 @@ const Order = () => {
 
   return (
     <div>
-      { page ? <OrderConfirmation /> : <OrderAddress setPage={setPage} />}
+      { page ? <OrderConfirmation setPage={setPage} /> : <OrderAddress setPage={setPage} />}
     </div>
   )
 }
