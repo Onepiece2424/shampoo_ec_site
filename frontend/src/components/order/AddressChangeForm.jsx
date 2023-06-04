@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Button } from '@mui/material';
 import { Field } from 'redux-form';
 import styled from 'styled-components';
@@ -34,6 +35,9 @@ const AddressChangeForm = ({ Modal, close }) => {
     address3: ""
   });
 
+  const form = useSelector(state => state.form);
+  const values = form && form.orderForm && form.orderForm.values;
+
   // 郵便番号から住所情報の検索結果の取得
   const handleZipcodeChange = async (e) => {
     const enteredZipcode = e.target.value;
@@ -48,6 +52,12 @@ const AddressChangeForm = ({ Modal, close }) => {
       }
     }
   };
+
+  // お届け先変更
+  const addressChange = () => {
+    close()
+    console.log('お届け先を変更します。')
+  }
 
   return (
     <Modal>
@@ -79,7 +89,7 @@ const AddressChangeForm = ({ Modal, close }) => {
         <div>
           <ButtonWrapper>
             <Button onClick={close}>閉じる</Button>
-            <Button onClick={close}>変更する</Button>
+            <Button onClick={addressChange} disabled={!values || !values.receiver_name || values.receiver_name.length === 0}>変更する</Button>
           </ButtonWrapper>
         </div>
       </ModalWrapper>
