@@ -21,7 +21,7 @@ const DatePickerField = ({
 
   const parseInputValue = (value) => {
     if (value) {
-      return moment(value).toDate();
+      return moment(value, 'YYYY-MM-DD');
     }
     return null;
   };
