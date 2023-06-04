@@ -30,24 +30,20 @@ const AddressChangeForm = ({ Modal, close }) => {
     address3: "",
   });
 
-  const updateZipcodeMain = (e) => {
-    setZipcode({ ...zipcode, main: e.target.value });
-  };
-
-  const updateZipcodeSub = async (e) => {
-     setZipcode({ ...zipcode, sub: e.target.value });
-    if (e.target.value.length === 4 && zipcode.main.length === 3) {
+  // 郵便番号の検索
+  const handleZipcodeChange = async (e) => {
+    const enteredZipcode = e.target.value;
+    if (enteredZipcode.length === 7) {
+      setZipcode(enteredZipcode);
       try {
         const res = await axios.get(
           "https://zipcloud.ibsnet.co.jp/api/search",
           {
             params: {
-              zipcode: zipcode.main + e.target.value,
+              zipcode: enteredZipcode
             },
           }
         );
-
-        console.log(res)
 
         if (res.data.results) {
           const result = res.data.results[0];
@@ -75,10 +71,7 @@ const AddressChangeForm = ({ Modal, close }) => {
             <Field name="phone_number" component={renderTextField} label="電話番号" />
           </FieldWrapper>
           <FieldWrapper>
-            <Field name="post_code_main" component={renderTextField} label="郵便番号（3桁）" onChange={updateZipcodeMain} />
-          </FieldWrapper>
-          <FieldWrapper>
-            <Field name="post_code_sub" component={renderTextField} label="郵便番号（4桁）" onChange={updateZipcodeSub} />
+            <Field name="post_code" component={renderTextField} label="郵便番号" onChange={handleZipcodeChange} maxLength={7} />
           </FieldWrapper>
           <FieldWrapper>
             <Field name="prefectures" component={renderTextField} label="都道府県" />
