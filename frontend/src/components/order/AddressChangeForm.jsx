@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { Button } from '@mui/material';
 import { Field } from 'redux-form';
-import { renderTextField } from '../modules/renderTextField';
 import styled from 'styled-components';
+
+// components
+import { renderTextField } from '../modules/renderTextField';
+
+// modules
+import { fetchAddressByZipcode } from '../../modules/fetchAddressByZipcode';
 
 const ModalWrapper = styled.div`
   background-color: #fff;
@@ -27,34 +31,20 @@ const AddressChangeForm = ({ Modal, close }) => {
   const [address, setAddress] = useState({
     address1: "",
     address2: "",
-    address3: "",
+    address3: ""
   });
 
-  // 郵便番号の検索
+  // 郵便番号から住所情報の検索結果の取得
   const handleZipcodeChange = async (e) => {
     const enteredZipcode = e.target.value;
     if (enteredZipcode.length === 7) {
       setZipcode(enteredZipcode);
-      try {
-        const res = await axios.get(
-          "https://zipcloud.ibsnet.co.jp/api/search",
-          {
-            params: {
-              zipcode: enteredZipcode
-            },
-          }
-        );
 
-        if (res.data.results) {
-          const result = res.data.results[0];
-          setAddress({
-            address1: result["address1"],
-            address2: result["address2"],
-            address3: result["address3"],
-          });
-        }
-      } catch {
-        alert("住所の取得に失敗しました。");
+      try {
+        const addressData = await fetchAddressByZipcode(enteredZipcode);
+        setAddress(addressData);
+      } catch (error) {
+        alert(error.message);
       }
     }
   };
