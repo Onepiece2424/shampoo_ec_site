@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { useModal } from 'react-hooks-use-modal';
 import { Button, Card } from '@mui/material';
@@ -28,6 +29,9 @@ const OrderAddress = (props) => {
   const [Modal, open, close, isOpen] = useModal('root', {
     preventScroll: true,
   });
+
+  const form = useSelector(state => state.form);
+  const values = form && form.orderForm && form.orderForm.values;
 
   return (
     <div>
@@ -82,7 +86,9 @@ const OrderAddress = (props) => {
           </div>
         </div>
         <div>
-          <StyledButton variant="contained" style={{ margin: '15px 0' }} onClick={() => setPage(true)}>最終確認ページへ</StyledButton>
+          <StyledButton variant="contained" style={{ margin: '15px 0' }} onClick={() => setPage(true)} disabled={!values || !values.receiver_name || values.receiver_name.length === 0}>
+            最終確認ページへ
+          </StyledButton>
         </div>
       </form>
     </div>
