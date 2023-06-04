@@ -36,7 +36,7 @@ const OrderConfirmation = ({ setPage }) => {
       </div>
       <div style={{ margin: '10px 0' }}>
         <div style={{ textAlign: 'left' }}>支払い方法</div>
-        <div>{values.how_to_payment}</div>
+        <div>{values.how_to_payment === "credit" ? "クレジット" : "代引き"}</div>
       </div>
       <div style={{ margin: '10px 0'}}>
         <StyledButton variant="contained" style={{ margin: '0 10px'}} onClick={() => setPage(false)}>1つ前に戻る</StyledButton>
