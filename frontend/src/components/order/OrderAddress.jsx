@@ -91,4 +91,5 @@ const OrderAddress = (props) => {
 
 export default reduxForm({
   form: 'orderForm',
+  destroyOnUnmount: false
 })(OrderAddress);
