@@ -13,7 +13,6 @@ const initialState = {
 
 // reducer
 export const cartReducer = (state = initialState, action) => {
-  console.log(action)
   switch(action.type) {
     case 'FETCH_CARTDATA':
       return { ...state, item: action.payload.data.items, total_price: action.payload.data.total }
