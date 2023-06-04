@@ -20,34 +20,31 @@ const OrderConfirmation = () => {
         <div style={{ textAlign: 'left' }}>受取人名</div>
         <div>{values.receiver_name}</div>
       </div>
-      <div>
+      <div style={{ margin: '10px 0' }}>
         <div style={{ textAlign: 'left' }}>電話番号</div>
         <div>{values.phone_number}</div>
       </div>
-      <div>
+      <div style={{ margin: '10px 0' }}>
         <div style={{ textAlign: 'left' }}>お届け先</div>
         <div>{values.post_code}</div>
         <div>{values.prefectures}{values.municipality}{values.street_number}{values.building_name}</div>
       </div>
-      <div>
+      <div style={{ margin: '10px 0' }}>
         <div style={{ textAlign: 'left' }}>お届け日時</div>
         <div>{values.appointed_delivery_date}</div>
         <div>{values.appointed_delivery_time}</div>
       </div>
-      <div>
+      <div style={{ margin: '10px 0' }}>
         <div style={{ textAlign: 'left' }}>支払い方法</div>
         <div>{values.how_to_payment}</div>
       </div>
-      <div>
-        <div style={{ textAlign: 'right' }}>
-          <StyledButton variant="contained" style={{ margin: '15px 0' }}>注文確定</StyledButton>
-        </div>
+      <div style={{ margin: '10px 0'}}>
+        <StyledButton variant="contained" style={{ margin: '0 10px'}}>1つ前に戻る</StyledButton>
+        <StyledButton variant="contained" style={{ margin: '0 10px'}}>注文確定</StyledButton>
       </div>
     </div>
   )
 }
-
-// export default OrderConfirmation
 
 export default reduxForm({
   form: 'orderForm',
