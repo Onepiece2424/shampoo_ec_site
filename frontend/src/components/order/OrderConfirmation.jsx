@@ -26,7 +26,8 @@ const OrderConfirmation = () => {
       </div>
       <div>
         <div style={{ textAlign: 'left' }}>お届け先</div>
-        <div></div>
+        <div>{values.post_code}</div>
+        <div>{values.prefectures}{values.municipality}{values.street_number}{values.building_name}</div>
       </div>
       <div>
         <div style={{ textAlign: 'left' }}>お届け日時</div>
