@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
+import { reduxForm } from 'redux-form';
 import styled from 'styled-components';
 import { Button } from '@mui/material';
+
+// api,modules
+import { createOrder } from '../../apis/createOrder';
+import { fetchUserData } from '../../apis/fetchUserDara';
+import { setupAxiosHeaders, createAPIInstance } from '../../modules/accessUserData';
 
 const StyledButton = styled(Button)`
   margin: 20px 0;
@@ -12,6 +17,24 @@ const OrderConfirmation = ({ setPage }) => {
 
   const form = useSelector(state => state.form);
   const values = form && form.orderForm && form.orderForm.values;
+  const dispatch = useDispatch()
+
+  // ログインユーザーの取得
+  useEffect(() => {
+    const accessToken = localStorage.getItem('access-token');
+    const client = localStorage.getItem('client');
+    const uid = localStorage.getItem('uid');
+
+    setupAxiosHeaders(accessToken, client, uid);
+    const api = createAPIInstance(accessToken, client, uid);
+
+    fetchUserData(api.defaults.headers.common, dispatch)
+  }, [dispatch])
+
+  // 注文確定
+  const confirmedOrder = () => {
+    createOrder(values)
+  }
 
   return (
     <div style={{ margin: '0 20px' }}>
@@ -40,7 +63,7 @@ const OrderConfirmation = ({ setPage }) => {
       </div>
       <div style={{ margin: '20px 0'}}>
         <StyledButton variant="contained" style={{ margin: '0 10px'}} onClick={() => setPage(false)}>1つ前に戻る</StyledButton>
-        <StyledButton variant="contained" style={{ margin: '0 10px'}}>注文確定</StyledButton>
+        <StyledButton variant="contained" style={{ margin: '0 10px'}} onClick={confirmedOrder}>注文確定</StyledButton>
       </div>
     </div>
   )

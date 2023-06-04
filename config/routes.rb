@@ -10,7 +10,7 @@ Rails.application.routes.draw do
         resources :sessions, only: [:index]
       end
 
-      resources :orders, only: [:index]
+      resources :orders
       resources :users
       post 'users/fetch_userdata', to: 'users#fetch_userdata'
       resources :carts
