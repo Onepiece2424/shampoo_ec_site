@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  post_code: 1
+  prefecture: MyString
+  address_line1: MyString
+  address_line2: MyString
+  address_line3: MyString
+  recipient_name: MyString
+  recipient_phone: 1
+  order: one
+
+two:
+  post_code: 1
+  prefecture: MyString
+  address_line1: MyString
+  address_line2: MyString
+  address_line3: MyString
+  recipient_name: MyString
+  recipient_phone: 1
+  order: two
