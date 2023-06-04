@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import { Button } from '@mui/material';
-import { Field, reduxForm } from 'redux-form';
+import { Field } from 'redux-form';
 import { renderTextField } from '../modules/renderTextField';
 import styled from 'styled-components';
 
@@ -21,6 +22,47 @@ const ButtonWrapper = styled.div`
 `;
 
 const AddressChangeForm = ({ Modal, close }) => {
+
+  const [zipcode, setZipcode] = useState();
+  const [address, setAddress] = useState({
+    address1: "",
+    address2: "",
+    address3: "",
+  });
+
+  const updateZipcodeMain = (e) => {
+    setZipcode({ ...zipcode, main: e.target.value });
+  };
+
+  const updateZipcodeSub = async (e) => {
+     setZipcode({ ...zipcode, sub: e.target.value });
+    if (e.target.value.length === 4 && zipcode.main.length === 3) {
+      try {
+        const res = await axios.get(
+          "https://zipcloud.ibsnet.co.jp/api/search",
+          {
+            params: {
+              zipcode: zipcode.main + e.target.value,
+            },
+          }
+        );
+
+        console.log(res)
+
+        if (res.data.results) {
+          const result = res.data.results[0];
+          setAddress({
+            address1: result["address1"],
+            address2: result["address2"],
+            address3: result["address3"],
+          });
+        }
+      } catch {
+        alert("住所の取得に失敗しました。");
+      }
+    }
+  };
+
   return (
     <Modal>
       <ModalWrapper>
@@ -33,7 +75,10 @@ const AddressChangeForm = ({ Modal, close }) => {
             <Field name="phone_number" component={renderTextField} label="電話番号" />
           </FieldWrapper>
           <FieldWrapper>
-            <Field name="post_code" component={renderTextField} label="郵便番号" />
+            <Field name="post_code_main" component={renderTextField} label="郵便番号（3桁）" onChange={updateZipcodeMain} />
+          </FieldWrapper>
+          <FieldWrapper>
+            <Field name="post_code_sub" component={renderTextField} label="郵便番号（4桁）" onChange={updateZipcodeSub} />
           </FieldWrapper>
           <FieldWrapper>
             <Field name="prefectures" component={renderTextField} label="都道府県" />
