@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_04_022640) do
+ActiveRecord::Schema.define(version: 2023_06_05_205228) do
 
   create_table "cart_items", force: :cascade do |t|
     t.integer "cart_id", null: false
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 2023_06_04_022640) do
     t.integer "total_price"
     t.integer "payment"
     t.date "delivery_date"
-    t.time "delivery_time"
+    t.integer "delivery_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_orders_on_user_id"
