@@ -39,6 +39,9 @@ module Api
           delivery_time: params[:appointed_delivery_time]
         )
 
+        # お届け先(OrderAddress)データの作成
+        order_address = OrderAddress.create(order_id: orders.id, recipient_name: params[:receiver_name], recipient_phone: params[:phone_number], post_code: params[:post_code], prefecture: params[:prefectures], address_line1: params[:municipality], address_line2: params[:street_number], address_line3: params[:building_name])
+
         render json: { orders: orders }, status: :ok
       end
 
