@@ -5,8 +5,8 @@ const renderRadioGroup = ({ input, meta: { touched, error } }) => (
   <Box display="flex" justifyContent="center">
     <div>
       <RadioGroup {...input}>
-        <FormControlLabel value="credit" control={<Radio />} label="クレジット" />
-        <FormControlLabel value="cash_on_delivery" control={<Radio />} label="代引き" />
+        <FormControlLabel value={0} control={<Radio />} label="クレジット" />
+        <FormControlLabel value={1} control={<Radio />} label="代引き" />
       </RadioGroup>
       {touched && error && <span>{error}</span>}
     </div>
