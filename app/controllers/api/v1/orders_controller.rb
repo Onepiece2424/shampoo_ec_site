@@ -10,10 +10,9 @@ module Api
 
       def create
         user = current_api_v1_user
-        user_id = current_api_v1_user.id
-        cart_items = current_api_v1_user.cart.cart_items
+        user_id = user.id
+        cart_items = user.cart.cart_items
 
-        # 商品データ（商品名、金額、説明）
         items_data = cart_items.map do |cart_item|
           {
             id: cart_item.item.id,
@@ -24,24 +23,24 @@ module Api
           }
         end
 
-        # 商品合計金額
-        total = 0
-        cart_items.each do |cart_item|
-          total += cart_item.quantity * cart_item.item.price
-        end
-        total
+        # 商品の合計金額の計算
+        total = cart_items.sum { |cart_item| cart_item.quantity * cart_item.item.price }
 
-        # お届け予定日のデータの型の変更
-        date_string = params[:appointed_delivery_date]
-        date = Date.parse(date_string)
-
-        # 支払い方法を数値に変換
+        # 日付と支払い方法のデータの型の変更
+        date = Date.parse(params[:appointed_delivery_date])
         payment = params[:how_to_payment].to_i
 
-        orders = Order.create(user_id: user_id, total_price: total, payment: payment, delivery_date: date, delivery_time: params[:appointed_delivery_time])
+        orders = Order.create(
+          user_id: user_id,
+          total_price: total,
+          payment: payment,
+          delivery_date: date,
+          delivery_time: params[:appointed_delivery_time]
+        )
 
         render json: { orders: orders }, status: :ok
       end
+
 
       private
 
