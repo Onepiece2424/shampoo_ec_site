@@ -30,6 +30,7 @@ module Api
         date = Date.parse(params[:appointed_delivery_date])
         payment = params[:how_to_payment].to_i
 
+        # 注文(Order)データの作成
         orders = Order.create(
           user_id: user_id,
           total_price: total,
