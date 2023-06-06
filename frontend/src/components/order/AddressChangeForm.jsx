@@ -35,6 +35,8 @@ const AddressChangeForm = ({ Modal, close }) => {
     address3: ""
   });
 
+  console.log(address)
+
   const form = useSelector(state => state.form);
   const values = form && form.orderForm && form.orderForm.values;
 
