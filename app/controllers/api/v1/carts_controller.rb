@@ -4,7 +4,7 @@ module Api
       before_action :authenticate_api_v1_user!
 
       def index
-        cart_items = current_api_v1_user.cart.cart_items
+        cart_items = current_api_v1_user.cart.cart_items.not_order_confirm
 
         # 商品データ（商品名、金額、説明）
         items_data = cart_items.map do |cart_item|
