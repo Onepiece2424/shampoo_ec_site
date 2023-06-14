@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { reduxForm } from 'redux-form';
 import styled from 'styled-components';
 import { Button } from '@mui/material';
@@ -15,9 +16,11 @@ const StyledButton = styled(Button)`
 
 const OrderConfirmation = ({ setPage }) => {
 
+  const flag = useSelector(state => state.pageFlag);
   const form = useSelector(state => state.form);
   const values = form && form.orderForm && form.orderForm.values;
   const dispatch = useDispatch()
+  const navigate = useNavigate();
 
   // ログインユーザーの取得
   useEffect(() => {
@@ -33,7 +36,8 @@ const OrderConfirmation = ({ setPage }) => {
 
   // 注文確定
   const confirmedOrder = () => {
-    createOrder(values)
+    createOrder(values, dispatch)
+    flag && navigate('/thanks')
   }
 
   return (
