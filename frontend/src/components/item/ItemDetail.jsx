@@ -106,7 +106,7 @@ const ItemDetail = () => {
           </Field>
           <br></br>
           <br></br>
-          <Button variant="outlined" onClick={InsertItemToCart}>カートに入れる</Button>
+          <Button variant="outlined" onClick={InsertItemToCart} disabled={!values}>カートに入れる</Button>
           <Button variant="outlined" style={{ margin: '3mm'}} onClick={() => navigate('/order')}>ご注文手続きへ</Button>
         </div>
       </div>
