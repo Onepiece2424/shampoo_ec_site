@@ -12,4 +12,6 @@ export const itemsDetail = (itemId) => `${DEFAULT_API_LOCALHOST}/items/${itemId}
 export const cartsIndex = `${DEFAULT_API_LOCALHOST}/carts`
 export const createCarturl = `${DEFAULT_API_LOCALHOST}/carts`
 
+export const cartItemIndex = `${DEFAULT_API_LOCALHOST}/cart_items`
+
 export const createOrderurl = `${DEFAULT_API_LOCALHOST}/orders`

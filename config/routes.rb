@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       resources :users
       post 'users/fetch_userdata', to: 'users#fetch_userdata'
       resources :carts
+      resources :cart_items
       resources :items
     end
   end
