@@ -11,7 +11,7 @@ export const fetchUserData = async(userData, dispatch) => {
     dispatch(dispatchUserData(data));
 
     // カートに含まれる商品情報（CartItem）の取得
-    fetchCartItemData()
+    fetchCartItemData(dispatch)
 
   }).catch(error => {
     console.log(error);

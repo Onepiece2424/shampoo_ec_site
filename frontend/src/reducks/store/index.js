@@ -6,12 +6,14 @@ import { reducer as reduxFormReducer } from 'redux-form';
 import { userReducer } from "../reducers/user";
 import { flagReducer } from "../reducers/common";
 import { cartReducer } from "../reducers/cart";
+import { cartItemReducer } from "../reducers/cart_items";
 
 export const rootReducer = combineReducers({
   form: reduxFormReducer,
   user: userReducer,
   pageFlag: flagReducer,
   cart: cartReducer,
+  cart_items: cartItemReducer,
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

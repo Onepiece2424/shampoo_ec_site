@@ -27,6 +27,7 @@ const ItemDetail = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch()
 
+  const cart_items = useSelector(state => state.cart_items);
   const form = useSelector(state => state.form);
   const values = form && form.orderForm && form.orderForm.values;
 
@@ -107,7 +108,7 @@ const ItemDetail = () => {
           <br></br>
           <br></br>
           <Button variant="outlined" onClick={InsertItemToCart} disabled={!values}>カートに入れる</Button>
-          <Button variant="outlined" style={{ margin: '3mm'}} onClick={() => navigate('/order')}>ご注文手続きへ</Button>
+          <Button variant="outlined" style={{ margin: '3mm'}} onClick={() => navigate('/order')} disabled={cart_items.cart_items.length === 0}>ご注文手続きへ</Button>
         </div>
       </div>
     </div>
