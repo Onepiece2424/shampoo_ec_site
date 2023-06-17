@@ -69,8 +69,6 @@ const ItemDetail = () => {
     setFlag(false)
   }
 
-  console.log(flag, cart_items)
-
   return (
     <div className="contents">
       <br></br>

@@ -7,7 +7,6 @@ import { fetchCartItemData } from './fetchCartItem';
 export const fetchUserData = async(userData, dispatch) => {
   await axios.post(userDataUrl, userData)
   .then(data => {
-    console.log(data)
     dispatch(dispatchUserData(data));
 
     // カートに含まれる商品情報（CartItem）の取得
