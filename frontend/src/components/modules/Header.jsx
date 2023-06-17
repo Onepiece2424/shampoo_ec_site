@@ -14,6 +14,12 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import HomeIcon from '@mui/icons-material/Home';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import LockOpenIcon from '@mui/icons-material/LockOpen';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+
+
 
 const Header = () => {
   const navigate = useNavigate();
@@ -30,6 +36,14 @@ const Header = () => {
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+
+  const handleSignUpClick = () => {
+    navigate('/users/sign_up');
+  }
+
+  const handleSignInClick = () => {
+    navigate('/users/sign_in');
+  }
 
   return (
     <>
@@ -71,17 +85,22 @@ const Header = () => {
         <List>
           <ListItem button onClick={handleHomeClick}>
             <ListItemIcon>
-              <MenuIcon />
+              <HomeIcon />
             </ListItemIcon>
-            <ListItemText primary="Home" />
+            <ListItemText primary="トップ" />
           </ListItem>
-          <ListItem button onClick={handleCartClick}>
+          <ListItem button onClick={handleSignUpClick}>
             <ListItemIcon>
-              <ShoppingCartOutlinedIcon />
+              <PersonAddIcon />
             </ListItemIcon>
-            <ListItemText primary="Cart" />
+            <ListItemText primary="新規登録" />
           </ListItem>
-          {/* Add more sidebar items as needed */}
+          <ListItem button onClick={handleSignInClick}>
+            <ListItemIcon>
+              <LockOpenIcon />
+            </ListItemIcon>
+            <ListItemText primary="ログイン" />
+          </ListItem>
         </List>
       </Drawer>
     </>
