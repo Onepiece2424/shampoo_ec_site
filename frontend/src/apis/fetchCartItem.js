@@ -6,7 +6,6 @@ import { dispatchCartItemData } from '../reducks/reducers/cart_items';
 export const fetchCartItemData = async(dispatch) => {
   await axios.get(cartItemIndex)
   .then(data => {
-    console.log(data)
     dispatch(dispatchCartItemData(data))
   }).catch(error => {
     console.log(error);

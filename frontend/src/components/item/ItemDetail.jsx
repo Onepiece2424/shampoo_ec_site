@@ -22,6 +22,7 @@ import { setupAxiosHeaders, createAPIInstance } from '../../modules/accessUserDa
 const ItemDetail = () => {
 
   const [item, setItem] = useState()
+  const [flag, setFlag] = useState(true)
   const params = useParams();
   const id = params.id
   const navigate = useNavigate();
@@ -64,7 +65,11 @@ const ItemDetail = () => {
     const quantity = values.quantity
 
     createCart(ItemName, quantity)
+
+    setFlag(false)
   }
+
+  console.log(flag, cart_items)
 
   return (
     <div className="contents">
@@ -108,14 +113,15 @@ const ItemDetail = () => {
           <br></br>
           <br></br>
           <Button variant="outlined" onClick={InsertItemToCart} disabled={!values}>カートに入れる</Button>
-          <Button variant="outlined" style={{ margin: '3mm'}} onClick={() => navigate('/order')} disabled={cart_items.cart_items.length === 0}>ご注文手続きへ</Button>
+          <Button variant="outlined" style={{ margin: '3mm'}} onClick={() => navigate('/order')}
+            disabled={flag && cart_items.cart_items.length === 0}>
+            ご注文手続きへ
+          </Button>
         </div>
       </div>
     </div>
   )
 }
-
-// export default ItemDetail
 
 export default reduxForm({
   form: 'orderForm',
