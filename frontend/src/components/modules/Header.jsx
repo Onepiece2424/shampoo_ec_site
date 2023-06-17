@@ -20,7 +20,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import HomeIcon from '@mui/icons-material/Home';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+// import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
