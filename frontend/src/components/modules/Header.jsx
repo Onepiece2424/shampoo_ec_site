@@ -20,7 +20,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import HomeIcon from '@mui/icons-material/Home';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
-// import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -60,6 +60,10 @@ const Header = () => {
   const handleSignInClick = () => {
     toggleSidebar()
     navigate('/users/sign_in');
+  }
+
+  const handleSignOutClick = () => {
+    toggleSidebar()
   }
 
   const theme = useTheme();
@@ -127,6 +131,12 @@ const Header = () => {
               <LockOpenIcon />
             </ListItemIcon>
             <ListItemText primary="ログイン" />
+          </ListItem>
+          <ListItem button onClick={handleSignOutClick}>
+            <ListItemIcon>
+              <ExitToAppIcon />
+            </ListItemIcon>
+            <ListItemText primary="ログアウト" />
           </ListItem>
         </List>
       </Drawer>

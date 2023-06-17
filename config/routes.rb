@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       }
 
       namespace :auth do
-        resources :sessions, only: [:index]
+        resources :sessions
       end
 
       resources :orders
