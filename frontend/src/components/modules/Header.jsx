@@ -25,7 +25,13 @@ const Header = () => {
   const navigate = useNavigate();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+  // サイドバーの開閉
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   const handleHomeClick = () => {
+    toggleSidebar()
     navigate('/');
   };
 
@@ -33,15 +39,13 @@ const Header = () => {
     navigate('/carts');
   };
 
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
-
   const handleSignUpClick = () => {
+    toggleSidebar()
     navigate('/users/sign_up');
   }
 
   const handleSignInClick = () => {
+    toggleSidebar()
     navigate('/users/sign_in');
   }
 
