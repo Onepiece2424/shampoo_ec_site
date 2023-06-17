@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { styled, useTheme } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import {
   AppBar,
@@ -14,12 +15,20 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import HomeIcon from '@mui/icons-material/Home';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
-
+const DrawerHeader = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  padding: theme.spacing(0, 1),
+  ...theme.mixins.toolbar,
+  justifyContent: 'flex-start',
+}));
 
 const Header = () => {
   const navigate = useNavigate();
@@ -29,6 +38,10 @@ const Header = () => {
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+
+  const handleTopClick = () => {
+    navigate('/');
+  }
 
   const handleHomeClick = () => {
     toggleSidebar()
@@ -49,6 +62,11 @@ const Header = () => {
     navigate('/users/sign_in');
   }
 
+  const theme = useTheme();
+  const handleDrawerClose = () => {
+    toggleSidebar()
+  };
+
   return (
     <>
       <AppBar position="static">
@@ -57,7 +75,7 @@ const Header = () => {
             edge="start"
             color="inherit"
             aria-label="menu"
-            onClick={handleHomeClick}
+            onClick={handleTopClick}
           >
             SHOP LOGO
           </IconButton>
@@ -86,6 +104,11 @@ const Header = () => {
         </Toolbar>
       </AppBar>
       <Drawer anchor="right" open={isSidebarOpen} onClose={toggleSidebar}>
+        <DrawerHeader>
+          <IconButton onClick={handleDrawerClose}>
+            {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+          </IconButton>
+        </DrawerHeader>
         <List>
           <ListItem button onClick={handleHomeClick}>
             <ListItemIcon>
