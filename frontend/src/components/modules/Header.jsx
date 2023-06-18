@@ -104,7 +104,12 @@ const Header = () => {
     setUserToken(accessToken)
   }, [])
 
-  
+  // マウント時にサイドバー「ログイン」を非表示
+  const userAccessToken = localStorage.getItem('access-token');
+  useEffect(() => {
+    const accessToken = localStorage.getItem('access-token');
+    setUserToken(accessToken)
+  }, [userAccessToken])
 
   return (
     <>
