@@ -124,6 +124,7 @@ const Header = () => {
             SHOP LOGO
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} />
+          {userToken &&
           <IconButton
             color="inherit"
             aria-label="cart"
@@ -131,10 +132,11 @@ const Header = () => {
             onClick={handleCartClick}
           >
             <ShoppingCartOutlinedIcon />
-          </IconButton>
+          </IconButton>}
+           {userToken &&
           <IconButton color="inherit" aria-label="favorite" sx={{ mr: 2 }}>
             <FavoriteBorderOutlinedIcon />
-          </IconButton>
+          </IconButton>}
           <IconButton
             size="large"
             edge="end"
