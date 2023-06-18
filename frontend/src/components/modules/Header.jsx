@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { styled, useTheme } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -21,7 +22,9 @@ import HomeIcon from '@mui/icons-material/Home';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import FaceIcon from '@mui/icons-material/Face';
 import { userSignOut } from '../../apis/userSignOut';
+import { fetchUserData } from '../../apis/fetchUserDara';
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -32,10 +35,12 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 const Header = () => {
-  const navigate = useNavigate();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [userHeader, setUserHeader] = useState()
   const [userToken, setUserToken] = useState()
+  const user = useSelector(state => state.user)
+  const dispatch = useDispatch()
+  const navigate = useNavigate();
 
   // サイドバーの開閉
   const toggleSidebar = () => {
@@ -102,7 +107,9 @@ const Header = () => {
 
     setUserHeader(headers)
     setUserToken(accessToken)
-  }, [])
+
+    fetchUserData(headers, dispatch)
+  }, [dispatch])
 
   // マウント時にサイドバー「ログイン」を非表示
   const userAccessToken = localStorage.getItem('access-token');
@@ -157,6 +164,10 @@ const Header = () => {
             </IconButton>
           </DrawerHeader>
           <List>
+            <ListItem>
+              <ListItemText primaryTypographyProps={{ style: { fontSize: '12px' } }} primary="ユーザー名：" />
+              <ListItemText primary={user.name} />
+            </ListItem>
             <ListItem button onClick={handleHomeClick}>
               <ListItemIcon>
                 <HomeIcon />

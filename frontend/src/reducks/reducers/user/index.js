@@ -8,7 +8,7 @@ const initialState = {
 export const userReducer = (state = initialState, action) => {
   switch(action.type) {
     case 'CREATE_USER_DATA':
-      return { ...state, email: action.payload.data.email, name: action.payload.data.name }
+      return { ...state, email: action.payload.data.data.email, name: action.payload.data.data.name }
     default:
       return state
   }
