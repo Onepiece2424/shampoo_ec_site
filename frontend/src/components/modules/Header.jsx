@@ -35,6 +35,7 @@ const Header = () => {
   const navigate = useNavigate();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [userHeader, setUserHeader] = useState()
+  const [userToken, setUserToken] = useState()
 
   // サイドバーの開閉
   const toggleSidebar = () => {
@@ -100,6 +101,7 @@ useEffect(() => {
   };
 
   setUserHeader(headers)
+  setUserToken(accessToken)
 }, [])
 
   return (
@@ -157,18 +159,22 @@ useEffect(() => {
             </ListItemIcon>
             <ListItemText primary="新規登録" />
           </ListItem>
+          {!userToken &&
           <ListItem button onClick={handleSignInClick}>
             <ListItemIcon>
               <LockOpenIcon />
             </ListItemIcon>
             <ListItemText primary="ログイン" />
           </ListItem>
+          }
+          {userToken &&
           <ListItem button onClick={handleSignOutClick}>
             <ListItemIcon>
               <ExitToAppIcon />
             </ListItemIcon>
             <ListItemText primary="ログアウト" />
           </ListItem>
+          }
         </List>
       </Drawer>
     </>

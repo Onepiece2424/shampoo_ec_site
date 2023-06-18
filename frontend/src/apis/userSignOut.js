@@ -6,6 +6,10 @@ export const userSignOut = async(userHeader) => {
   await axios.post(logoutIndex, userHeader)
   .then(data => {
     console.log(data)
+
+    localStorage.removeItem("access-token");
+    localStorage.removeItem("client");
+    localStorage.removeItem("uid");
   }).catch(error => {
     console.log(error);
   });
