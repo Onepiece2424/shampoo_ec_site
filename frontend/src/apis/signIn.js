@@ -12,6 +12,7 @@ export const verifyUserData = async(params, dispatch) => {
       dispatch(pageTransitionFlag(true));
 
       // 取得したresponseからdataプロパティのuserプロパティの中にあるaccess_tokenなどを分割代入で抽出
+      // eslint-disable-next-line
       const { data: { user, user: { access_token, client, uid } } } = response;
 
       // 取得したトークン情報をlocalStorageなどに保存
