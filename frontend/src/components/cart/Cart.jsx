@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -12,14 +12,20 @@ import logo from '../..//20230416_シャンプー画像.jpg'
 
 const Cart = () => {
   const cart = useSelector(state => state.cart)
+  const [cartFlag, setCartFlag] = useState(false)
   const dispatch = useDispatch()
   const navigate = useNavigate();
 
-    // ログアウト状態の時、ログインページへ遷移
-    useEffect(() => {
-      const userAccessToken = localStorage.getItem('access-token');
-      !userAccessToken && navigate('/users/sign_in')
-    }, [navigate])
+  // CartItemがある時にのみデータを表示
+  useEffect(() => {
+    setCartFlag(cart.total_price)
+  }, [cart])
+
+  // ログアウト状態の時、ログインページへ遷移
+  useEffect(() => {
+    const userAccessToken = localStorage.getItem('access-token');
+    !userAccessToken && navigate('/users/sign_in')
+  }, [navigate])
 
   // カートデータの取得
   useEffect(() => {
@@ -64,7 +70,7 @@ const Cart = () => {
 
   return (
     <div style={{ padding: '10px'}}>
-      {cart.item.map((item, index) => {
+      {cartFlag?.length !== 0 && cart.item.map((item, index) => {
         return (
           <Card style={{ margin: '10px' }} key={index}>
             <Grid container>
