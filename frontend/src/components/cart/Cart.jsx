@@ -15,6 +15,12 @@ const Cart = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate();
 
+    // ログアウト状態の時、ログインページへ遷移
+    useEffect(() => {
+      const userAccessToken = localStorage.getItem('access-token');
+      !userAccessToken && navigate('/users/sign_in')
+    }, [navigate])
+
   // カートデータの取得
   useEffect(() => {
     // localStorageからトークン情報を取得

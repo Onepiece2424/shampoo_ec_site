@@ -37,6 +37,12 @@ const ItemDetail = () => {
     "", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
   ];
 
+  // ログアウト状態の時、ログインページへ遷移
+  useEffect(() => {
+    const userAccessToken = localStorage.getItem('access-token');
+    !userAccessToken && navigate('/users/sign_in')
+  }, [navigate])
+
   // 商品詳細データの取得
   useEffect(() => {
     fetchItemsDetail(id)
