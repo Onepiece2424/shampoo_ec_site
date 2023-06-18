@@ -118,7 +118,7 @@ const ItemDetail = () => {
           <br></br>
           <Button variant="outlined" onClick={InsertItemToCart} disabled={!values}>カートに入れる</Button>
           <Button variant="outlined" style={{ margin: '3mm'}} onClick={() => navigate('/order')}
-            disabled={flag && cart_items.cart_items.length === 0}>
+            disabled={flag && !(cart_items?.cart_items[0]?.id)}>
             ご注文手続きへ
           </Button>
         </div>
