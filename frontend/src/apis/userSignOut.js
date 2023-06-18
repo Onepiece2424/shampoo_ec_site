@@ -10,6 +10,9 @@ export const userSignOut = async(userHeader) => {
     localStorage.removeItem("access-token");
     localStorage.removeItem("client");
     localStorage.removeItem("uid");
+
+    // ログアウト時にページを強制更新
+    window.location.reload()
   }).catch(error => {
     console.log(error);
   });
