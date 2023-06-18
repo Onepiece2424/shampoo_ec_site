@@ -28,16 +28,12 @@ module Api
         uid = params[:uid]
         client = params[:client]
 
-        if (uid && client).present?
-          user = User.find_by(email: uid)
-          if user.tokens.present?
-            user.tokens = nil
-            user.save!
-            render json: { success: true }
-            return
-          else
-            render json: { success: false }, status: :unauthorized
-          end
+        if (uid && client).present? && user.present? && user.tokens.present?
+          user.tokens = {}
+          user.save!
+          render json: { success: true }
+        else
+          render json: { success: false }, status: :unauthorized
         end
       end
     end
