@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -21,6 +21,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import { userSignOut } from '../../apis/userSignOut';
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -33,6 +34,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 const Header = () => {
   const navigate = useNavigate();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [userHeader, setUserHeader] = useState()
 
   // サイドバーの開閉
   const toggleSidebar = () => {
@@ -62,7 +64,21 @@ const Header = () => {
     navigate('/users/sign_in');
   }
 
+  // ログアウト
   const handleSignOutClick = () => {
+    const accessToken = localStorage.getItem('access-token');
+    const client = localStorage.getItem('client');
+    const uid = localStorage.getItem('uid');
+
+    const headers = {
+      'access-token': accessToken,
+      'client': client,
+      'uid': uid
+    };
+
+    setUserHeader(headers)
+    userSignOut(userHeader)
+
     toggleSidebar()
   }
 
@@ -70,6 +86,21 @@ const Header = () => {
   const handleDrawerClose = () => {
     toggleSidebar()
   };
+
+  // ユーザー情報の取得
+useEffect(() => {
+  const accessToken = localStorage.getItem('access-token');
+  const client = localStorage.getItem('client');
+  const uid = localStorage.getItem('uid');
+
+  const headers = {
+    'access-token': accessToken,
+    'client': client,
+    'uid': uid
+  };
+
+  setUserHeader(headers)
+}, [])
 
   return (
     <>

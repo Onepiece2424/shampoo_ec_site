@@ -22,12 +22,24 @@ module Api
         end
       end
 
-      # def register_token
-      #   user = User.find(params[:data]["data"]["id"])
-      #   token = params[:headers]["access-token"]
-      #   client = params[:headers]["client"]
-      #   uid = params[:headers]["uid"]
-      # end
+      # ログアウト
+      def logout
+        user = current_api_v1_user
+        uid = params[:uid]
+        client = params[:client]
+
+        if (uid && client).present?
+          user = User.find_by(email: uid)
+          if user.tokens.present?
+            user.tokens = nil
+            user.save!
+            render json: { success: true }
+            return
+          else
+            render json: { success: false }, status: :unauthorized
+          end
+        end
+      end
     end
   end
 end
