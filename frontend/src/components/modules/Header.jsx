@@ -82,11 +82,19 @@ const Header = () => {
       'uid': uid
     };
 
-    setUserHeader(headers)
-    userSignOut(userHeader)
+    setUserHeader(headers);
 
-    toggleSidebar()
-  }
+    // userSignOut関数がlocalStorageの値を削除する処理を含む場合
+    userSignOut(headers); // userSignOut関数の引数としてheadersを渡す
+
+    // userSignOut関数がlocalStorageの値を削除しない場合
+    localStorage.removeItem('access-token');
+    localStorage.removeItem('client');
+    localStorage.removeItem('uid');
+
+    toggleSidebar();
+  };
+
 
   const theme = useTheme();
   const handleDrawerClose = () => {
