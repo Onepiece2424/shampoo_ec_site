@@ -99,7 +99,7 @@ const Cart = () => {
       })}
       <div style={{ margin: '20px', display: 'flex' }}>
         <Typography style={{ minWidth: '50%' }}>合計金額：¥{cart.total_price}</Typography>
-        <Button variant="contained" style={{ minWidth: '50%' }} onClick={GoToOrderPage} disabled={cart.total_price.length <= 0}>注文手続きへ</Button>
+        <Button variant="contained" style={{ minWidth: '50%' }} onClick={GoToOrderPage} disabled={cart.total_price <= 0}>注文手続きへ</Button>
       </div>
     </div>
   )
