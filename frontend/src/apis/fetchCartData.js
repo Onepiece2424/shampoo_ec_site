@@ -10,7 +10,7 @@ export const fetchCartData = async(headers, dispatch) => {
       console.log(data)
       dispatch(dispatchCartData(data));
     }).catch(error => {
-      console.log(error);
+      // console.log(error);
     });
   // }
 };

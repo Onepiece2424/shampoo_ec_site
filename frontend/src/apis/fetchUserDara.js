@@ -13,6 +13,6 @@ export const fetchUserData = async(userData, dispatch) => {
     fetchCartItemData(dispatch)
 
   }).catch(error => {
-    console.log(error);
+    // console.log(error);
   });
 };

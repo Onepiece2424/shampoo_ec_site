@@ -8,6 +8,6 @@ export const fetchCartItemData = async(dispatch) => {
   .then(data => {
     dispatch(dispatchCartItemData(data))
   }).catch(error => {
-    console.log(error);
+    // console.log(error);
   });
 };
