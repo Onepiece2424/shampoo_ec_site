@@ -16,7 +16,7 @@ class Api::V1::Auth::SessionsController < DeviseTokenAuth::SessionsController
 
       # トークン情報をJSON形式で返す
       render json: {
-        user: user.as_json.merge({
+        data: user.as_json.merge({
           access_token: token['access-token'],
           client: token['client'],
           uid: token['uid']
