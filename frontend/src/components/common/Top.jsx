@@ -22,7 +22,9 @@ const Top = () => {
   }, [])
 
   // 一覧ページに切り替えるためのフラグ（state）を初期化
-  dispatch(pageTransitionFlag(false))
+  useEffect(() => {
+    dispatch(pageTransitionFlag(false))
+  }, [dispatch])
 
   return (
     <div>
