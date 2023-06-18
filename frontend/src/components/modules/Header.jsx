@@ -89,20 +89,22 @@ const Header = () => {
   };
 
   // ユーザー情報の取得
-useEffect(() => {
-  const accessToken = localStorage.getItem('access-token');
-  const client = localStorage.getItem('client');
-  const uid = localStorage.getItem('uid');
+  useEffect(() => {
+    const accessToken = localStorage.getItem('access-token');
+    const client = localStorage.getItem('client');
+    const uid = localStorage.getItem('uid');
 
-  const headers = {
-    'access-token': accessToken,
-    'client': client,
-    'uid': uid
-  };
+    const headers = {
+      'access-token': accessToken,
+      'client': client,
+      'uid': uid
+    };
 
-  setUserHeader(headers)
-  setUserToken(accessToken)
-}, [])
+    setUserHeader(headers)
+    setUserToken(accessToken)
+  }, [])
+
+  
 
   return (
     <>
