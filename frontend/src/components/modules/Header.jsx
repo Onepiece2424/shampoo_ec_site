@@ -165,8 +165,14 @@ const Header = () => {
           </DrawerHeader>
           <List>
             <ListItem>
-              <ListItemText primaryTypographyProps={{ style: { fontSize: '12px' } }} primary="ユーザー名：" />
-              <ListItemText primary={user.name} />
+              {user?.name ?
+              <>
+                <ListItemText primaryTypographyProps={{ style: { fontSize: '12px' } }} primary="ユーザー名：" />
+                <ListItemText primary={user.name} />
+              </>
+              :
+              <ListItemText primaryTypographyProps={{ style: { fontSize: '12px' } }} primary="現在ログインしておりません。" />
+              }
             </ListItem>
             <ListItem button onClick={handleHomeClick}>
               <ListItemIcon>
