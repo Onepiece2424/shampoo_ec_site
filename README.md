@@ -1,24 +1,23 @@
-# README
+## プロジェクト名
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+SHAMPOO_ECSITE
 
-Things you may want to cover:
+## ページ紹介
 
-* Ruby version
 
-* System dependencies
 
-* Configuration
 
-* Database creation
+## 使用技術
+ruby 2.7.5
+rails 6.1.7
+react
+redux
+AWS
 
-* Database initialization
 
-* How to run the test suite
+## 使い方
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## 注意点
 
-* ...
+注意点などがあれば書く
