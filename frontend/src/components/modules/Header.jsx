@@ -150,41 +150,43 @@ const Header = () => {
         </Toolbar>
       </AppBar>
       <Drawer anchor="right" open={isSidebarOpen} onClose={toggleSidebar}>
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-          </IconButton>
-        </DrawerHeader>
-        <List>
-          <ListItem button onClick={handleHomeClick}>
-            <ListItemIcon>
-              <HomeIcon />
-            </ListItemIcon>
-            <ListItemText primary="トップ" />
-          </ListItem>
-          <ListItem button onClick={handleSignUpClick}>
-            <ListItemIcon>
-              <PersonAddIcon />
-            </ListItemIcon>
-            <ListItemText primary="新規登録" />
-          </ListItem>
-          {!userToken &&
-          <ListItem button onClick={handleSignInClick}>
-            <ListItemIcon>
-              <LockOpenIcon />
-            </ListItemIcon>
-            <ListItemText primary="ログイン" />
-          </ListItem>
-          }
-          {userToken &&
-          <ListItem button onClick={handleSignOutClick}>
-            <ListItemIcon>
-              <ExitToAppIcon />
-            </ListItemIcon>
-            <ListItemText primary="ログアウト" />
-          </ListItem>
-          }
-        </List>
+        <div className='sidebar'>
+          <DrawerHeader>
+            <IconButton onClick={handleDrawerClose}>
+              {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+            </IconButton>
+          </DrawerHeader>
+          <List>
+            <ListItem button onClick={handleHomeClick}>
+              <ListItemIcon>
+                <HomeIcon />
+              </ListItemIcon>
+              <ListItemText primary="トップ" />
+            </ListItem>
+            <ListItem button onClick={handleSignUpClick}>
+              <ListItemIcon>
+                <PersonAddIcon />
+              </ListItemIcon>
+              <ListItemText primary="新規登録" />
+            </ListItem>
+            {!userToken &&
+            <ListItem button onClick={handleSignInClick}>
+              <ListItemIcon>
+                <LockOpenIcon />
+              </ListItemIcon>
+              <ListItemText primary="ログイン" />
+            </ListItem>
+            }
+            {userToken &&
+            <ListItem button onClick={handleSignOutClick}>
+              <ListItemIcon>
+                <ExitToAppIcon />
+              </ListItemIcon>
+              <ListItemText primary="ログアウト" />
+            </ListItem>
+            }
+          </List>
+        </div>
       </Drawer>
     </>
   );

@@ -79,3 +79,8 @@
 .thanks-text {
   margin: 20px 10px;
 }
+
+/* サイドバー */
+.sidebar {
+  width: 200px;
+}
