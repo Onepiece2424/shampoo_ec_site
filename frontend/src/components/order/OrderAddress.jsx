@@ -31,7 +31,7 @@ const OrderAddress = (props) => {
   });
 
   const form = useSelector(state => state.form);
-  const values = form && form.orderForm && form.orderForm.values;
+  const value = form && form.orderForm && form.orderForm.values;
 
   return (
     <div>
@@ -40,9 +40,9 @@ const OrderAddress = (props) => {
           <h3>お届け先</h3>
           <Wrapper>
             <StyledCard variant="outlined">
-              <div>氏名：テスト太郎</div>
-              <div>郵便番号：111-1111</div>
-              <div>電話番号：090-1111-1111</div>
+              <div>氏名：{form?.orderForm?.values?.receiver_name}</div>
+              <div>郵便番号：{form?.orderForm?.values?.post_code}</div>
+              <div>電話番号：{form?.orderForm?.values?.phone_number}</div>
             </StyledCard>
           </Wrapper>
           <div>
@@ -86,7 +86,7 @@ const OrderAddress = (props) => {
           </div>
         </div>
         <div>
-          <StyledButton variant="contained" style={{ margin: '15px 0' }} onClick={() => setPage(true)} disabled={!values || !values.receiver_name || values.receiver_name.length === 0}>
+          <StyledButton variant="contained" style={{ margin: '15px 0' }} onClick={() => setPage(true)} disabled={!value || !value.receiver_name || value.receiver_name.length === 0}>
             最終確認ページへ
           </StyledButton>
         </div>
