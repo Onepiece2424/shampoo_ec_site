@@ -9,35 +9,31 @@ const DatePickerField = ({
   ...custom
 }) => {
 
-  // 選択した日付を「YYYY-MM-DD」の形に変換
+  const currentDate = new Date();
+  const minDate = new Date(currentDate);
+  minDate.setDate(minDate.getDate() + 2);
+
   const handleDateChange = (selectedDate) => {
     if (selectedDate) {
-      const formattedDate = moment(selectedDate.$d).format('YYYY-MM-DD');
+      const formattedDate = selectedDate.toISOString().split('T')[0];
       onChange(formattedDate);
     } else {
       onChange(null);
     }
   };
 
-  const parseInputValue = (value) => {
-    if (value) {
-      return moment(value, 'YYYY-MM-DD');
-    }
-    return null;
-  };
-
   return (
     <div>
-      <DatePicker
+      <input
+        type="date"
+        value={value || ''}
+        onChange={(e) => handleDateChange(new Date(e.target.value))}
+        min={minDate.toISOString().split('T')[0]}
         {...custom}
-        value={parseInputValue(value)}
-        onChange={handleDateChange}
-        textField={(params) =>
-          <TextField {...params} error={touched && error} />
-        }
       />
+      {touched && error && <span>{error}</span>}
     </div>
   );
 };
 
-export default DatePickerField;
+export default DatePickerField
