@@ -1,16 +1,31 @@
-import React from 'react';
+import React , { useState } from 'react';
 import { FormControlLabel, Radio, RadioGroup, Box } from '@mui/material';
+import Credit from '../credit/Credit';
 
-const renderRadioGroup = ({ input, meta: { touched, error } }) => (
-  <Box display="flex" justifyContent="center">
-    <div>
-      <RadioGroup {...input}>
-        <FormControlLabel value={0} control={<Radio />} label="クレジット" />
-        <FormControlLabel value={1} control={<Radio />} label="代引き" />
-      </RadioGroup>
-      {touched && error && <span>{error}</span>}
-    </div>
-  </Box>
-);
+const RenderRadioGroup = ({ input, meta: { touched, error } }) => {
 
-export default renderRadioGroup
+  const [open, setOpen] = useState(false)
+
+  const creditOpen = () => {
+    setOpen(true)
+  }
+
+  const creditClose = () => {
+    setOpen(false)
+  }
+
+  return (
+    <Box display="flex" justifyContent="center">
+      <div>
+        <RadioGroup {...input}>
+          <FormControlLabel value={0} control={<Radio />} label="クレジット" onClick={creditOpen} />
+          {open && <Credit />}
+          <FormControlLabel value={1} control={<Radio />} label="代引き" onClick={creditClose} />
+        </RadioGroup>
+        {touched && error && <span>{error}</span>}
+      </div>
+    </Box>
+  )
+};
+
+export default RenderRadioGroup
