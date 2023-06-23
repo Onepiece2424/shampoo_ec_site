@@ -17,10 +17,10 @@ const RenderRadioGroup = ({ input, meta: { touched, error } }) => {
   return (
     <Box display="flex" justifyContent="center">
       <div>
-        <RadioGroup {...input}>
+        <RadioGroup {...input} defaultValue={1}>
+          <FormControlLabel value={1} control={<Radio />} label="代引き" onClick={creditClose} />
           <FormControlLabel value={0} control={<Radio />} label="クレジット" onClick={creditOpen} />
           {open && <Credit />}
-          <FormControlLabel value={1} control={<Radio />} label="代引き" onClick={creditClose} />
         </RadioGroup>
         {touched && error && <span>{error}</span>}
       </div>
