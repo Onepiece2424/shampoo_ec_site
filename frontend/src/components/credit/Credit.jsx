@@ -34,7 +34,7 @@ const PaymentForm = ({ handleSubmit }) => {
       <Cards focused={focus} {...formData} />
       <form onSubmit={handleSubmit}>
         {fields.map((field) => (
-          <div style={ {margin : '10px'} }>
+          <div style={ {margin : '10px'} } key={field.name}>
             <Field
               key={field.name}
               component='input'
