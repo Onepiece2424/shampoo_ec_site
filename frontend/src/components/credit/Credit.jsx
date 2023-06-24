@@ -32,7 +32,7 @@ const PaymentForm = ({ handleSubmit }) => {
   return (
     <div>
       <Cards focused={focus} {...formData} />
-      <form onSubmit={handleSubmit}>
+      {/* <form onSubmit={handleSubmit}> */}
         {fields.map((field) => (
           <div style={ {margin : '10px'} } key={field.name}>
             <Field
@@ -46,7 +46,7 @@ const PaymentForm = ({ handleSubmit }) => {
             />
           </div>
         ))}
-      </form>
+      {/* </form> */}
     </div>
   );
 };
