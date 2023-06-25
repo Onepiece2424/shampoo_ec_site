@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Cards from 'react-credit-cards-2';
 import { Field } from 'redux-form';
-import 'react-credit-cards-2/dist/es/styles-compiled.css';
+import Cards from 'react-credit-cards';
+import 'react-credit-cards/es/styles-compiled.css';
 
 const getFields = () => [
   { type: 'number', name: 'number', placeholder: 'Card Number' },
@@ -32,7 +32,6 @@ const PaymentForm = ({ handleSubmit }) => {
   return (
     <div>
       <Cards focused={focus} {...formData} />
-      {/* <form onSubmit={handleSubmit}> */}
         {fields.map((field) => (
           <div style={ {margin : '10px'} } key={field.name}>
             <Field
@@ -46,7 +45,6 @@ const PaymentForm = ({ handleSubmit }) => {
             />
           </div>
         ))}
-      {/* </form> */}
     </div>
   );
 };
