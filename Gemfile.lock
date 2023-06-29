@@ -178,6 +178,7 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     sqlite3 (1.6.2-x86_64-darwin)
+    stripe (8.5.0)
     thor (1.2.1)
     timeout (0.3.2)
     tzinfo (2.0.6)
@@ -208,6 +209,7 @@ DEPENDENCIES
   rails (~> 6.1.7, >= 6.1.7.3)
   spring
   sqlite3 (~> 1.4)
+  stripe
   tzinfo-data
   unicorn
 
