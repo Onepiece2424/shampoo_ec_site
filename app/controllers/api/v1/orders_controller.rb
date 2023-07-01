@@ -29,7 +29,7 @@ module Api
         order_address = create_order_address(orders.id, params)
 
         # CartItemを論理削除
-        cart_items.update_all(invalidated_at: Time.now)
+        cart_items.update_all(invalidated_at: Time.zone.now)
 
         render json: { orders: orders }, status: :ok
       end
