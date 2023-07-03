@@ -4,4 +4,8 @@ class User < ApplicationRecord
 
   has_one :cart, dependent: :destroy
   has_many :orders, dependent: :destroy
+
+  composed_of :profile,
+              mapping: [%w[name name], %w[email email]],
+              converter: ->(name, email) { Profile.new(name, email) }
 end
