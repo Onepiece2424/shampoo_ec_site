@@ -2,12 +2,13 @@ class Profile
   attr_accessor :name, :email
 
   def initialize(name, email)
-    @name, @email = name, email
+    @name = name
+    @email = email
   end
 
   # ユーザーの名前とアドレスを返す
   def name_and_email
-    return "私の名前は、#{name}です。アドレスは、#{email}です。"
+    "私の名前は、#{name}です。アドレスは、#{email}です。"
   end
 
   # 名前に特定の文字列を含むかどうかの判定
