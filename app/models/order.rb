@@ -7,10 +7,6 @@ class Order < ApplicationRecord
 
   scope :higher_total_price, -> { where('total_price > ?', 1000) } # total_priceが1000円以上の注文のみ抽出
 
-  def self.calculate_total_price(cart_items)
-    cart_items.sum { |cart_item| cart_item.quantity * cart_item.item.price }
-  end
-
   def self.create_order(user_id, total, params)
     Order.create(
       user_id: user_id,
@@ -21,22 +17,4 @@ class Order < ApplicationRecord
     )
   end
 
-  def self.create_order_address(order_id, params)
-    OrderAddress.create(
-      order_id: order_id,
-      recipient_name: params[:receiver_name],
-      recipient_phone: params[:phone_number],
-      post_code: params[:post_code],
-      prefecture: params[:prefectures],
-      address_line1: params[:municipality],
-      address_line2: params[:street_number],
-      address_line3: params[:building_name]
-    )
-  end
-
-  def self.invalidate_cart_items(cart_items)
-    cart_items.each do |cart_item|
-      cart_item.update(invalidated_at: Time.zone.now)
-    end
-  end
 end

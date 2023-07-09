@@ -10,7 +10,7 @@ module Api
 
       def create
         user = current_api_v1_user
-        cart_items = user.cart.cart_items
+        cart_items = user.cart.cart_items.not_order_confirm
 
         items_data = cart_items.map do |cart_item|
           {
@@ -22,10 +22,10 @@ module Api
           }
         end
 
-        total = Order.calculate_total_price(cart_items)
+        total = CartItem.calculate_total_price(cart_items)
         order = Order.create_order(user.id, total, params)
-        order_address = Order.create_order_address(order.id, params)
-        Order.invalidate_cart_items(cart_items)
+        order_address = OrderAddress.create_order_address(order.id, params)
+        CartItem.invalidate_cart_items(cart_items)
 
         render json: { orders: order }, status: :ok
       end

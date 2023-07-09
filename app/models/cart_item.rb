@@ -3,4 +3,14 @@ class CartItem < ApplicationRecord
   belongs_to :item
 
   scope :not_order_confirm, -> { where(invalidated_at: nil) }
+
+  def self.calculate_total_price(cart_items)
+    cart_items.sum { |cart_item| cart_item.quantity * cart_item.item.price }
+  end
+
+  def self.invalidate_cart_items(cart_items)
+    cart_items.each do |cart_item|
+      cart_item.update(invalidated_at: Time.zone.now)
+    end
+  end
 end
