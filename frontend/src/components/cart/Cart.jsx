@@ -3,11 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Card, CardContent, CardMedia, Typography, Grid, Button } from '@mui/material';
-
-// api
 import { fetchCartData } from '../../apis/fetchCartData';
-
-// 画像
+import { confirmedOrder } from '../../apis/confirmedOrder';
 import logo from '../..//20230416_シャンプー画像.jpg'
 
 const Cart = () => {
@@ -63,9 +60,9 @@ const Cart = () => {
     fetchCartData(headers, dispatch)
   }, [dispatch])
 
-  // 注文ページへ
+  // 決済ページへ遷移
   const GoToOrderPage = () => {
-    navigate('/order');
+    confirmedOrder()
   }
 
   return (

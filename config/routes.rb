@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
       resources :orders
       resources :users
+      resources :checkouts, only: [:create]
       post 'users/fetch_userdata', to: 'users#fetch_userdata'
       post 'users/logout', to: 'users#logout'
       resources :carts
