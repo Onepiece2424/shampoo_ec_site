@@ -31,8 +31,8 @@ class Api::V1::CheckoutsController < ApplicationController
           }
         }
       ],
-      success_url: 'https://example.com/success',
-      cancel_url: "https://example.com/cancel"
+      success_url: 'http://localhost:3000/thanks',
+      cancel_url: "http://localhost:3000/carts"
     )
   end
 end
