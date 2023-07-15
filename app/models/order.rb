@@ -8,14 +8,14 @@ class Order < ApplicationRecord
   scope :higher_total_price, -> { where('total_price > ?', 1000) } # total_priceが1000円以上の注文のみ抽出
 
   class << self
-    def create_order(user_id, total, params)
-      Order.create(
-        user_id: user_id,
-        total_price: total,
-        payment: params[:how_to_payment].to_i,
-        delivery_date: Date.parse(params[:appointed_delivery_date]),
-        delivery_time: params[:appointed_delivery_time]
-      )
+    def create_order(session)
+      Order.create!({
+        user_id: session.client_reference_id,
+        total_price: session.amount_total,
+        payment: 0,
+        delivery_date: Time.zone.today + 1.day,
+        delivery_time: 0
+      })
     end
   end
 end

@@ -2,17 +2,17 @@ class OrderAddress < ApplicationRecord
   belongs_to :order
 
   class << self
-    def self.create_order_address(order_id, params)
-      OrderAddress.create(
-        order_id: order_id,
-        recipient_name: params[:receiver_name],
-        recipient_phone: params[:phone_number],
-        post_code: params[:post_code],
-        prefecture: params[:prefectures],
-        address_line1: params[:municipality],
-        address_line2: params[:street_number],
-        address_line3: params[:building_name]
-      )
+    def create_order_address(session, session_with_expand, order)
+      OrderAddress.create!({
+        post_code: session_with_expand.shipping_details.address.postal_code,
+        prefecture: session_with_expand.shipping_details.address.state,
+        address_line1: session_with_expand.shipping_details.address.line1,
+        address_line2: session_with_expand.shipping_details.address.line2,
+        address_line3: "",
+        recipient_name: session.shipping_details.name,
+        recipient_phone: 9_012_345_678,
+        order_id: order.id
+      })
     end
   end
 end
