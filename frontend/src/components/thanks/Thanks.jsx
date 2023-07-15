@@ -1,9 +1,26 @@
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux';
 import { Button } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
+import { setupAxiosHeaders, createAPIInstance } from '../../modules/accessUserData';
+import { fetchUserData } from '../../apis/fetchUserDara';
 
 const Thanks = () => {
 
+  const dispatch = useDispatch()
   const navigate = useNavigate()
+
+  // ログインユーザーの取得
+  useEffect(() => {
+    const accessToken = localStorage.getItem('access-token');
+    const client = localStorage.getItem('client');
+    const uid = localStorage.getItem('uid');
+
+    setupAxiosHeaders(accessToken, client, uid);
+    const api = createAPIInstance(accessToken, client, uid);
+
+    fetchUserData(api.defaults.headers.common, dispatch)
+  }, [dispatch])
 
   return (
     <div>
