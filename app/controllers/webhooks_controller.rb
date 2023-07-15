@@ -10,11 +10,7 @@ class WebhooksController < ApplicationController
       event = Stripe::Webhook.construct_event(
         payload, sig_header, endpoint_secret
       )
-    rescue JSON::ParserError => e
-      Rails.logger.debug e
-      status 400
-      return
-    rescue Stripe::SignatureVerificationError => e
+    rescue JSON::ParserError, Stripe::SignatureVerificationError => e
       Rails.logger.debug e
       status 400
       return
@@ -29,7 +25,7 @@ class WebhooksController < ApplicationController
       ApplicationRecord.transaction do
         order = create_order(session)
         session_with_expand = Stripe::Checkout::Session.retrieve({ id: session.id, expand: ['line_items'] })
-        order_address = create_order_address(session, session_with_expand, order)
+        create_order_address(session, session_with_expand, order)
         CartItem.invalidate_cart_items(cart_items)
       end
 
@@ -44,7 +40,7 @@ class WebhooksController < ApplicationController
       user_id: session.client_reference_id,
       total_price: session.amount_total,
       payment: 0,
-      delivery_date: Date.today + 1.days,
+      delivery_date: Time.zone.today + 1.day,
       delivery_time: 0
     })
   end
@@ -57,8 +53,8 @@ class WebhooksController < ApplicationController
       address_line2: session_with_expand.shipping_details.address.line2,
       address_line3: "",
       recipient_name: session.shipping_details.name,
-      recipient_phone: 9012345678,
-      order_id: order.id,
+      recipient_phone: 9_012_345_678,
+      order_id: order.id
     })
   end
 end
