@@ -12,6 +12,7 @@ import ItemDropDownForm from './ItemDropDownForm';
 // api
 import { fetchItemsDetail } from '../../apis/itemsDetail'
 import { fetchUserData } from '../../apis/fetchUserDara';
+import { confirmedOrder } from '../../apis/confirmedOrder';
 
 // function
 import { createCart } from '../../apis/createCart';
@@ -75,6 +76,11 @@ const ItemDetail = () => {
     setFlag(false)
   }
 
+  // 決済ページへ遷移
+  const GoToOrderPage = () => {
+    confirmedOrder()
+  }
+
   return (
     <div className="contents">
       <br></br>
@@ -117,7 +123,7 @@ const ItemDetail = () => {
           <br></br>
           <br></br>
           <Button variant="outlined" onClick={InsertItemToCart} disabled={!values}>カートに入れる</Button>
-          <Button variant="outlined" style={{ margin: '3mm'}} onClick={() => navigate('/order')}
+          <Button variant="outlined" style={{ margin: '3mm'}} onClick={GoToOrderPage}
             disabled={flag && !(cart_items?.cart_items[0]?.id)}>
             ご注文手続きへ
           </Button>
