@@ -1,4 +1,4 @@
-class WebhooksController < ApplicationController
+class Api::V1::WebhooksController < ApplicationController
   protect_from_forgery except: :webhook
 
   def create

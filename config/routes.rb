@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       resources :orders
       resources :users
       resources :checkouts, only: [:create]
+      resources :webhooks, only: [:create]
       post 'users/fetch_userdata', to: 'users#fetch_userdata'
       post 'users/logout', to: 'users#logout'
       resources :carts
@@ -20,5 +21,4 @@ Rails.application.routes.draw do
       resources :items
     end
   end
-  resources :webhooks, only: [:create]
 end
