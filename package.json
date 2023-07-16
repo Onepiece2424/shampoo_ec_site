@@ -1,0 +1,27 @@
+{
+  "name": "shampoo_ec_site",
+  "version": "1.0.0",
+  "description": "SHAMPOO_ECSITE",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Onepiece2424/shampoo_ec_site.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Onepiece2424/shampoo_ec_site/issues"
+  },
+  "homepage": "https://github.com/Onepiece2424/shampoo_ec_site#readme",
+  "dependencies": {
+    "zenn-cli": "^0.1.144"
+  }
+}
