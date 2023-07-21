@@ -3,6 +3,7 @@ class User < ApplicationRecord
   include DeviseTokenAuth::Concerns::User
 
   has_one :cart, dependent: :destroy
+  has_many :cart_items, through: :cart
   has_many :orders, dependent: :destroy
 
   composed_of :profile,
