@@ -1,5 +1,4 @@
 class Api::V1::WebhooksController < ApplicationController
-
   def create
     payload = request.body.read
     sig_header = request.env['HTTP_STRIPE_SIGNATURE']
