@@ -6,7 +6,7 @@ on:
       - feature/order
 
 env:
-  SLACK_USERNAME: DeployBot
+  SLACK_USERNAME: Slack Notification Reporter（Slack通知報告です~）
   SLACK_ICON: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
   SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
