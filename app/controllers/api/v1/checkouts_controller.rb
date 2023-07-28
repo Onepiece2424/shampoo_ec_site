@@ -2,8 +2,7 @@ class Api::V1::CheckoutsController < ApplicationController
   before_action :authenticate_api_v1_user!
 
   def create
-    line_items = current_api_v1_user.line_items_checkout
-    session = create_session(line_items)
+    session = create_session(current_api_v1_user.line_items_checkout)
     render json: { session: session }, status: :ok
   end
 
