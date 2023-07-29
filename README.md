@@ -4,7 +4,7 @@ SHAMPOO_ECSITE
 
 ## ページ紹介
 ### 商品一覧（トップ）
-<img width="1440" alt="20230619_商品一覧ページ" src="https://github.com/Onepiece2424/shampoo_ec_site/assets/79039664/13233c37-cb46-4443-afe4-f86230dd7a61">
+<img width="1440" alt="20230619_商品一覧ページ" src="image (1).webp">
 
 ### ユーザー登録
 <img width="1440" alt="20230619_ユーザー登録ページ" src="https://github.com/Onepiece2424/shampoo_ec_site/assets/79039664/f6b1ef59-17c6-4131-9204-397767728f05">
