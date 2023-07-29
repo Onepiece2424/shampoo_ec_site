@@ -18,8 +18,8 @@ SHAMPOO_ECSITE
 ### カート
 <img width="1440" alt="20230619_カートページ" src="image (3).webp">
 
-### 注文手続き
-<img width="1440" alt="20230619_注文手続きページ" src="image (6).webp">
+### 決済
+<img width="1440" alt="決済ページ" src="image (7).webp">
 
 
 ## 使用技術
