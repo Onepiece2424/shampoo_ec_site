@@ -7,19 +7,19 @@ SHAMPOO_ECSITE
 <img width="1440" alt="20230619_商品一覧ページ" src="image (1).webp">
 
 ### ユーザー登録
-<img width="1440" alt="20230619_ユーザー登録ページ" src="https://github.com/Onepiece2424/shampoo_ec_site/assets/79039664/f6b1ef59-17c6-4131-9204-397767728f05">
+<img width="1440" alt="20230619_ユーザー登録ページ" src="image (4).webp">
 
 ### ログイン
-<img width="1440" alt="20230619_ログインページ" src="https://github.com/Onepiece2424/shampoo_ec_site/assets/79039664/bdbf712d-b5bf-4a82-a8d4-bb0adfe37287">
+<img width="1440" alt="20230619_ログインページ" src="image (5).webp">
 
 ### 商品詳細
-<img width="1440" alt="20230619_商品詳細ページ" src="https://github.com/Onepiece2424/shampoo_ec_site/assets/79039664/16734f77-371d-459c-a203-d6bcd869b53b">
+<img width="1440" alt="20230619_商品詳細ページ" src="image (2).webp">
 
 ### カート
-<img width="1440" alt="20230619_カートページ" src="https://github.com/Onepiece2424/shampoo_ec_site/assets/79039664/b2610a70-179c-484e-bbb2-3d01cdfeb377">
+<img width="1440" alt="20230619_カートページ" src="image (3).webp">
 
 ### 注文手続き
-<img width="1440" alt="20230619_注文手続きページ" src="https://github.com/Onepiece2424/shampoo_ec_site/assets/79039664/1d602560-17e1-42c6-b6ff-6fc49ae046d1">
+<img width="1440" alt="20230619_注文手続きページ" src="image (6).webp">
 
 
 ## 使用技術
