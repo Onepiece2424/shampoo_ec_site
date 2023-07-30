@@ -7,6 +7,14 @@ class Number
   def addition
     puts @num1 + @num2
   end
+
+  def subtraction
+    puts @num1 - @num2
+  end
+
+  def multiplication
+    puts @num1 * @num2
+  end
 end
 
-Number.new(1, 2).addition
+Number.new(1, 2).multiplication
