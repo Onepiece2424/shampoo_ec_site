@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_14_212116) do
+ActiveRecord::Schema.define(version: 2023_08_05_065046) do
+
+  create_table "animals", force: :cascade do |t|
+    t.string "type"
+    t.string "name"
+    t.integer "age"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "cart_items", force: :cascade do |t|
     t.integer "cart_id", null: false
