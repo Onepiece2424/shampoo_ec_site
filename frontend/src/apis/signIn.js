@@ -20,8 +20,11 @@ export const verifyUserData = async(params, dispatch) => {
       localStorage.setItem('client', response.data.data.client);
       localStorage.setItem('uid', response.data.data.uid);
 
+      alert('ログイン成功しました。')
+
     }).catch(error => {
       console.log(error);
+      alert('ログイン失敗しました。')
     });
   // }
 };
