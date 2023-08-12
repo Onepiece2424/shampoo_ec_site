@@ -53,16 +53,16 @@ const ItemDetail = () => {
   }, [id])
 
   // ログインユーザーの取得
-  useEffect(() => {
-    const accessToken = localStorage.getItem('access-token');
-    const client = localStorage.getItem('client');
-    const uid = localStorage.getItem('uid');
+  // useEffect(() => {
+  //   const accessToken = localStorage.getItem('access-token');
+  //   const client = localStorage.getItem('client');
+  //   const uid = localStorage.getItem('uid');
 
-    setupAxiosHeaders(accessToken, client, uid);
-    const api = createAPIInstance(accessToken, client, uid);
+  //   setupAxiosHeaders(accessToken, client, uid);
+  //   const api = createAPIInstance(accessToken, client, uid);
 
-    fetchUserData(api.defaults.headers.common, dispatch)
-  }, [dispatch])
+  //   fetchUserData(api.defaults.headers.common, dispatch)
+  // }, [dispatch])
 
   // カートの作成とカートに商品追加
   const InsertItemToCart = () => {

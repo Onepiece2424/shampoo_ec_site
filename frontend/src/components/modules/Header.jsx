@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { styled, useTheme } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
@@ -72,29 +73,39 @@ const Header = () => {
 
   // ログアウト
   const handleSignOutClick = () => {
-    const accessToken = localStorage.getItem('access-token');
-    const client = localStorage.getItem('client');
-    const uid = localStorage.getItem('uid');
+
+    // Cookieを取得
+    const cookies = document.cookie.split(';');
+    const cookieData = cookies.reduce((data, cookie) => {
+      const [key, value] = cookie.trim().split('=');
+      data[key] = value;
+      return data;
+    }, {});
+
+    const access_token = cookieData['access-token'] || null;
+    const client = cookieData['client'] || null;
+    const uid = cookieData['uid'] || null;
 
     const headers = {
-      'access-token': accessToken,
+      'access-token': access_token,
       'client': client,
       'uid': uid
     };
 
-    setUserHeader(headers);
+    const api = axios.create({
+      baseURL: 'http://localhost:3010/api/v1',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
-    // userSignOut関数がlocalStorageの値を削除する処理を含む場合
-    userSignOut(headers); // userSignOut関数の引数としてheadersを渡す
+    api.defaults.headers.common['access-token'] = access_token;
+    api.defaults.headers.common['client'] = client;
+    api.defaults.headers.common['uid'] = uid;
 
-    // userSignOut関数がlocalStorageの値を削除しない場合
-    localStorage.removeItem('access-token');
-    localStorage.removeItem('client');
-    localStorage.removeItem('uid');
-
+    userSignOut(headers, dispatch);
     toggleSidebar();
   };
-
 
   const theme = useTheme();
   const handleDrawerClose = () => {
@@ -103,28 +114,38 @@ const Header = () => {
 
   // ユーザー情報の取得
   useEffect(() => {
-    const accessToken = localStorage.getItem('access-token');
-    const client = localStorage.getItem('client');
-    const uid = localStorage.getItem('uid');
+
+    // Cookieを取得
+    const cookies = document.cookie.split(';');
+    const cookieData = cookies.reduce((data, cookie) => {
+      const [key, value] = cookie.trim().split('=');
+      data[key] = value;
+      return data;
+    }, {});
+
+    const access_token = cookieData['access-token'] || null;
+    const client = cookieData['client'] || null;
+    const uid = cookieData['uid'] || null;
 
     const headers = {
-      'access-token': accessToken,
+      'access-token': access_token,
       'client': client,
       'uid': uid
     };
 
-    setUserHeader(headers)
-    setUserToken(accessToken)
+    const api = axios.create({
+      baseURL: 'http://localhost:3010/api/v1',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    api.defaults.headers.common['access-token'] = access_token;
+    api.defaults.headers.common['client'] = client;
+    api.defaults.headers.common['uid'] = uid;
 
     fetchUserData(headers, dispatch)
   }, [dispatch])
-
-  // マウント時にサイドバー「ログイン」を非表示
-  const userAccessToken = localStorage.getItem('access-token');
-  useEffect(() => {
-    const accessToken = localStorage.getItem('access-token');
-    setUserToken(accessToken)
-  }, [userAccessToken])
 
   return (
     <>
@@ -139,7 +160,7 @@ const Header = () => {
             SHOP LOGO
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} />
-          {userToken &&
+          {user?.accessToken &&
           <IconButton
             color="inherit"
             aria-label="cart"
@@ -148,7 +169,7 @@ const Header = () => {
           >
             <ShoppingCartOutlinedIcon />
           </IconButton>}
-           {userToken &&
+           {user?.accessToken &&
           <IconButton color="inherit" aria-label="favorite" sx={{ mr: 2 }}>
             <FavoriteBorderOutlinedIcon />
           </IconButton>}
@@ -173,7 +194,7 @@ const Header = () => {
           </DrawerHeader>
           <List>
             <ListItem>
-              {user?.name ?
+              {user?.accessToken ?
               <>
                 <ListItemText primaryTypographyProps={{ style: { fontSize: '12px' } }} primary="ユーザー名：" />
                 <ListItemText primary={user.name} />
@@ -194,7 +215,7 @@ const Header = () => {
               </ListItemIcon>
               <ListItemText primary="新規登録" />
             </ListItem>
-            {!userToken &&
+            {!user?.accessToken &&
             <ListItem button onClick={handleSignInClick}>
               <ListItemIcon>
                 <LockOpenIcon />
@@ -202,7 +223,7 @@ const Header = () => {
               <ListItemText primary="ログイン" />
             </ListItem>
             }
-            {userToken &&
+            {user?.accessToken &&
             <ListItem button onClick={handleSignOutClick}>
               <ListItemIcon>
                 <ExitToAppIcon />

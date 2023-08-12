@@ -54,5 +54,8 @@ module ShampooEcSite
           methods: [:get, :post, :options, :delete, :put]
       end
     end
+
+    # Cookieの設定
+    config.middleware.use ActionDispatch::Cookies
   end
 end

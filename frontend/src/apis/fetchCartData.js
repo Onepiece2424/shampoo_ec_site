@@ -4,13 +4,11 @@ import { dispatchCartData } from '../reducks/reducers/cart';
 
 // カート情報取得
 export const fetchCartData = async(headers, dispatch) => {
-  // return (dispatch) => {
-    await axios.get(cartsIndex, headers)
+    await axios.get(cartsIndex, {params: {headers: headers}})
     .then(data => {
       console.log(data)
       dispatch(dispatchCartData(data));
     }).catch(error => {
       // console.log(error);
     });
-  // }
 };

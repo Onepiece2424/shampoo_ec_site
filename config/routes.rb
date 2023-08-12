@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       mount_devise_token_auth_for 'User', at: 'auth', controllers: {
         registrations: 'api/v1/auth/registrations',
-        sessions: 'api/v1/auth/sessions'
+        sessions: 'api/v1/auth/sessions',
       }
 
       namespace :auth do
@@ -14,7 +14,6 @@ Rails.application.routes.draw do
       resources :users
       resources :checkouts, only: [:create]
       resources :webhooks, only: [:create]
-      post 'users/fetch_userdata', to: 'users#fetch_userdata'
       post 'users/logout', to: 'users#logout'
       resources :carts
       resources :cart_items

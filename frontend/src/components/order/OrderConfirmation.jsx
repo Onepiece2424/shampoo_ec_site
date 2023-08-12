@@ -24,14 +24,14 @@ const OrderConfirmation = ({ setPage }) => {
 
   // ログインユーザーの取得
   useEffect(() => {
-    const accessToken = localStorage.getItem('access-token');
-    const client = localStorage.getItem('client');
-    const uid = localStorage.getItem('uid');
+    // const accessToken = localStorage.getItem('access-token');
+    // const client = localStorage.getItem('client');
+    // const uid = localStorage.getItem('uid');
 
-    setupAxiosHeaders(accessToken, client, uid);
-    const api = createAPIInstance(accessToken, client, uid);
+    // setupAxiosHeaders(accessToken, client, uid);
+    // const api = createAPIInstance(accessToken, client, uid);
 
-    fetchUserData(api.defaults.headers.common, dispatch)
+    fetchUserData(dispatch)
   }, [dispatch])
 
   // 注文確定

@@ -26,4 +26,16 @@ class Api::V1::Auth::SessionsController < DeviseTokenAuth::SessionsController
       render json: { error: 'Invalid email or password' }, status: :unauthorized
     end
   end
+
+  def destroy
+    @user = User.where(uid: params[:headers][:uid])
+    if @user
+    # @user.tokens = {}
+    # @user.save!
+      render json: { data: @user }, status: :ok
+    else
+      render json: { success: false }, status: :unauthorized
+    end
+
+  end
 end

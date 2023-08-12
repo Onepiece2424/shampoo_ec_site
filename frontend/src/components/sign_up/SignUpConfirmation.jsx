@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from "react-redux";
 import { useLocation, Link } from 'react-router-dom';
-
-// function
+import { fetchUserData } from '../../apis/fetchUserDara';
 import { pageTransitionFlag } from '../../reducks/reducers/common';
 
 const SignUpConfirmation = () => {
@@ -22,6 +21,10 @@ const SignUpConfirmation = () => {
       cleanupState();
     };
   }, [location.pathname, dispatch]);
+
+  useEffect(() => {
+    fetchUserData(dispatch)
+  }, [dispatch])
 
   return (
     <>

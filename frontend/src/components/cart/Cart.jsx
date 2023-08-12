@@ -26,18 +26,25 @@ const Cart = () => {
 
   // カートデータの取得
   useEffect(() => {
-    // localStorageからトークン情報を取得
-    const accessToken = localStorage.getItem('access-token');
-    const client = localStorage.getItem('client');
-    const uid = localStorage.getItem('uid');
+    // Cookieを取得
+    const cookies = document.cookie.split(';');
+    const cookieData = cookies.reduce((data, cookie) => {
+      const [key, value] = cookie.trim().split('=');
+      data[key] = value;
+      return data;
+    }, {});
+
+    const access_token = cookieData['access-token'] || null;
+    const client = cookieData['client'] || null;
+    const uid = cookieData['uid'] || null;
 
     // axiosのデフォルトリクエストヘッダにトークン情報を設定
-    axios.defaults.headers.common['access-token'] = accessToken;
+    axios.defaults.headers.common['access-token'] = access_token;
     axios.defaults.headers.common['client'] = client;
     axios.defaults.headers.common['uid'] = uid;
 
     const headers = {
-      'access-token': accessToken,
+      'access-token': access_token,
       'client': client,
       'uid': uid
     };
@@ -51,8 +58,8 @@ const Cart = () => {
       },
     });
 
-    if (accessToken && client && uid) {
-      api.defaults.headers.common['access-token'] = accessToken;
+    if (access_token && client && uid) {
+      api.defaults.headers.common['access-token'] = access_token;
       api.defaults.headers.common['client'] = client;
       api.defaults.headers.common['uid'] = uid;
     }

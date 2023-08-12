@@ -10,10 +10,12 @@ export const verifyUserData = async(params, dispatch) => {
     dispatch(dispatchUserData(response.data));
     dispatch(pageTransitionFlag(true));
 
-    // 取得したトークン情報をlocalStorageに保存
-    localStorage.setItem('access-token', response.data.data.access_token);
-    localStorage.setItem('client', response.data.data.client);
-    localStorage.setItem('uid', response.data.data.uid);
+    if (navigator.cookieEnabled)
+    {
+        document.cookie = 'access-token=' + response.data.data.access_token;
+        document.cookie = 'client=' + response.data.data.client;
+        document.cookie = 'uid=' + response.data.data.uid;
+    }
 
     alert('ログイン成功しました。')
 
