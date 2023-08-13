@@ -12,7 +12,7 @@ export const userReducer = (state = initialState, action) => {
     case 'CREATE_USER_DATA':
       return { ...state, userId: action.payload.data.id, email: action.payload.data.email, name: action.payload.data.name, accessToken: true }
     case 'FETCH_USER_DATA':
-      return { ...state, userId: action.payload.data[0].id, email: action.payload.data[0].email, name: action.payload.data[0].name, accessToken: true }
+      return { ...state, userId: action.payload.data.id, email: action.payload.data.email, name: action.payload.data.name, accessToken: true }
     case 'DELETE_USER_DATA':
       return { ...state, userId: "", email: "", name: "", accessToken: false }
     default:
