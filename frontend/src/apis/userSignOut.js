@@ -4,7 +4,7 @@ import { deleteUserData } from '../reducks/reducers/user';
 
 // ログアウト
 export const userSignOut = async(headers, dispatch) => {
-  await axios.delete(logoutIndex, { params: { headers: headers }})
+  await axios.delete(logoutIndex, { headers: headers })
   .then(response => {
     if (navigator.cookieEnabled)
     {
