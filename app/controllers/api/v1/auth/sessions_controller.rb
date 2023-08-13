@@ -9,10 +9,13 @@ class Api::V1::Auth::SessionsController < DeviseTokenAuth::SessionsController
 
   def create
     user = User.find_by(email: params[:email])
-    if user&.valid_password?(params[:password])
+    if user && user.valid_password?(params[:password])
 
       # トークンを生成
       token = user.create_new_auth_token
+
+      # レスポンスにトークン情報を含める（なくて良い。理由は、下で同じ内容を表側に返しているから）
+      # response.headers.merge!(token)
 
       # トークン情報をJSON形式で返す
       render json: {
@@ -30,12 +33,11 @@ class Api::V1::Auth::SessionsController < DeviseTokenAuth::SessionsController
   def destroy
     @user = User.where(uid: params[:headers][:uid])
     if @user
-    # @user.tokens = {}
-    # @user.save!
+      # @user.tokens = {}
+      # @user.save!
       render json: { data: @user }, status: :ok
     else
       render json: { success: false }, status: :unauthorized
     end
-
   end
 end
