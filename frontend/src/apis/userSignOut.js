@@ -13,6 +13,7 @@ export const userSignOut = async(headers, dispatch) => {
         document.cookie = 'uid=;max-age=0;';
     }
     dispatch(deleteUserData(response.data))
+    window.location.reload();
   }).catch(error => {
     console.log(error);
   });
