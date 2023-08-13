@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       resources :carts
       resources :cart_items
       resources :items
+      get 'home/index'
     end
   end
 end

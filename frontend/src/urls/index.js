@@ -17,3 +17,6 @@ export const cartItemIndex = `${DEFAULT_API_LOCALHOST}/cart_items`
 
 export const createOrderurl = `${DEFAULT_API_LOCALHOST}/orders`
 export const confirmOrderurl = `${DEFAULT_API_LOCALHOST}/checkouts`
+
+// 練習用API
+export const homeUrl = `${DEFAULT_API_LOCALHOST}/home/index`
