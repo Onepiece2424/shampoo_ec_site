@@ -92,16 +92,16 @@ const Header = () => {
       'uid': uid
     };
 
-    const api = axios.create({
-      baseURL: 'http://localhost:3010/api/v1',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    // const api = axios.create({
+    //   baseURL: 'http://localhost:3010/api/v1',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    // });
 
-    api.defaults.headers.common['access-token'] = access_token;
-    api.defaults.headers.common['client'] = client;
-    api.defaults.headers.common['uid'] = uid;
+    // api.defaults.headers.common['access-token'] = access_token;
+    // api.defaults.headers.common['client'] = client;
+    // api.defaults.headers.common['uid'] = uid;
 
     userSignOut(headers, dispatch);
     toggleSidebar();
