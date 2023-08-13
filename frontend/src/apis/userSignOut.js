@@ -14,6 +14,7 @@ export const userSignOut = async(headers, dispatch) => {
     }
     dispatch(deleteUserData(response.data))
     window.location.reload();
+    alert('ログアウト成功しました。')
   }).catch(error => {
     console.log(error);
   });

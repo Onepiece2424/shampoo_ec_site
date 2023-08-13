@@ -31,13 +31,26 @@ class Api::V1::Auth::SessionsController < DeviseTokenAuth::SessionsController
   end
 
   def destroy
-    @user = User.where(uid: params[:headers][:uid])
-    if @user
-      # @user.tokens = {}
-      # @user.save!
-      render json: { data: @user }, status: :ok
+    # ①ログインユーザー取得後、トークン情報の削除
+    # current_api_v1_user.tokens = {}
+    # current_api_v1_user.save!
+    # render json: { message: 'ログアウトしました。' }, status: :ok
+
+
+    # ②ヘッダー情報からユーザー情報を取得後、トークン情報を削除
+    # 認証情報を含むヘッダーからトークン情報を取得
+    client_id = request.headers['client']
+    uid = request.headers['uid']
+    access_token = request.headers['access-token']
+
+    # トークン情報を使用してユーザーを特定し、トークンを無効化する
+    user = User.find_by_uid(uid)
+    user.tokens.delete(client_id) if user
+
+    if user&.save
+      render json: { message: 'ログアウトしました。' }
     else
-      render json: { success: false }, status: :unauthorized
+      render json: { errors: ['ログアウトに失敗しました。'] }, status: :unprocessable_entity
     end
   end
 end
