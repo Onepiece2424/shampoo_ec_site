@@ -20,8 +20,15 @@ const Cart = () => {
 
   // ログアウト状態の時、ログインページへ遷移
   useEffect(() => {
-    const userAccessToken = localStorage.getItem('access-token');
-    !userAccessToken && navigate('/users/sign_in')
+    const cookies = document.cookie.split(';');
+    const cookieData = cookies.reduce((data, cookie) => {
+      const [key, value] = cookie.trim().split('=');
+      data[key] = value;
+      return data;
+    }, {});
+
+    const access_token = cookieData['access-token'] || null;
+    !access_token && navigate('/users/sign_in')
   }, [navigate])
 
   // カートデータの取得
