@@ -14,7 +14,6 @@ Rails.application.routes.draw do
       resources :users
       resources :checkouts, only: [:create]
       resources :webhooks, only: [:create]
-      post 'users/logout', to: 'users#logout'
       resources :carts
       resources :cart_items
       resources :items
