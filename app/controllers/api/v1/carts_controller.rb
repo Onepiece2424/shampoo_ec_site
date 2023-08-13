@@ -1,11 +1,11 @@
 module Api
   module V1
     class CartsController < ApplicationController
-      # before_action :authenticate_api_v1_user!
+      before_action :authenticate_api_v1_user!
 
       def index
         @user = User.where(uid: params[:headers][:uid])
-        cart_items = @user.last.cart.cart_items.not_order_confirm
+        cart_items = current_api_v1_user.cart.cart_items.not_order_confirm
 
         # 商品データ（商品名、金額、説明）
         items_data = cart_items.map do |cart_item|
