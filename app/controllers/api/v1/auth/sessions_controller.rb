@@ -9,7 +9,7 @@ class Api::V1::Auth::SessionsController < DeviseTokenAuth::SessionsController
 
   def create
     user = User.find_by(email: params[:email])
-    if user && user.valid_password?(params[:password])
+    if user&.valid_password?(params[:password])
 
       # トークンを生成
       token = user.create_new_auth_token
@@ -31,21 +31,13 @@ class Api::V1::Auth::SessionsController < DeviseTokenAuth::SessionsController
   end
 
   def destroy
-    # ①ログインユーザー取得後、トークン情報の削除
-    # current_api_v1_user.tokens = {}
-    # current_api_v1_user.save!
-    # render json: { message: 'ログアウトしました。' }, status: :ok
-
-
-    # ②ヘッダー情報からユーザー情報を取得後、トークン情報を削除
-    # 認証情報を含むヘッダーからトークン情報を取得
     client_id = request.headers['client']
     uid = request.headers['uid']
-    access_token = request.headers['access-token']
+    request.headers['access-token']
 
     # トークン情報を使用してユーザーを特定し、トークンを無効化する
-    user = User.find_by_uid(uid)
-    user.tokens.delete(client_id) if user
+    user = User.find_by(uid: uid)
+    user&.tokens&.delete(client_id)
 
     if user&.save
       render json: { message: 'ログアウトしました。' }

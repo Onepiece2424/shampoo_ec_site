@@ -9,8 +9,8 @@ class Api::V1::Auth::RegistrationsController < DeviseTokenAuth::RegistrationsCon
   end
 
   def set_token_info
-    token = response.headers["access-token"]
-    client = response.headers["client"]
-    uid = response.headers["uid"]
+    response.headers["access-token"]
+    response.headers["client"]
+    response.headers["uid"]
   end
 end
