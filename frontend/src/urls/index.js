@@ -1,4 +1,4 @@
-const DEFAULT_API_LOCALHOST = 'http://localhost:3010/api/v1'
+const DEFAULT_API_LOCALHOST = 'http://localhost:3000/api/v1'
 
 export const usersIndex = `${DEFAULT_API_LOCALHOST}/auth`
 export const loginIndex = `${DEFAULT_API_LOCALHOST}/auth/sign_in`
